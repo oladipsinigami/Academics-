@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIS 206 Interactive Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: white;
+            padding: 30px 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1a2b4c;
+            border-left: 6px solid #2a7de1;
+            padding-left: 18px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #5e6f8d;
+            font-size: 14px;
+            margin-left: 24px;
+            margin-bottom: 25px;
+        }
+
+        /* Timer & Controls */
+        .control-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8faff;
+            padding: 15px 20px;
+            border-radius: 14px;
+            border: 1px solid #e6edf5;
+            margin-bottom: 30px;
+        }
+
+        .timer-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-label {
+            font-weight: 600;
+            color: #2d3a5e;
+        }
+
+        .timer-btn {
+            background: white;
+            border: 1px solid #d0d9e8;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            color: #1f2a44;
+        }
+
+        .timer-btn.active {
+            background: #1a2b4c;
+            color: white;
+            border-color: #1a2b4c;
+        }
+
+        .timer-btn:hover {
+            background: #eef3fc;
+        }
+
+        .timer-display {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a2b4c;
+            letter-spacing: 1px;
+            background: #eef3fc;
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timer-display.warning {
+            color: #c44536;
+            background: #fde8e4;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .submit-btn {
+            background: #1a2b4c;
+            color: white;
+            border: none;
+            padding: 10px 35px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(26, 43, 76, 0.2);
+        }
+
+        .submit-btn:hover {
+            background: #2a3f6a;
+            transform: scale(1.02);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Questions */
+        .question-block {
+            background: #ffffff;
+            border: 1px solid #eaf0f8;
+            border-radius: 16px;
+            padding: 22px 25px;
+            margin-bottom: 22px;
+            transition: 0.2s;
+        }
+
+        .question-block.correct {
+            border-left: 6px solid #2a9d8f;
+            background: #f4fbfa;
+        }
+
+        .question-block.wrong {
+            border-left: 6px solid #e76f51;
+            background: #fdf6f4;
+        }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .q-number {
+            font-weight: 700;
+            color: #2a7de1;
+            font-size: 15px;
+        }
+
+        .q-type {
+            background: #e6edf5;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #2d3a5e;
+            letter-spacing: 0.3px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 500;
+            color: #0f1a30;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        /* MCQ Options */
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 14px;
+            background: #f9fcff;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: 0.1s;
+        }
+
+        .option-item:hover {
+            background: #f0f6fe;
+            border-color: #cbd9ed;
+        }
+
+        .option-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1a2b4c;
+            flex-shrink: 0;
+        }
+
+        .option-item label {
+            font-size: 15px;
+            color: #1f2a44;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Essay */
+        .essay-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1.5px solid #d0d9e8;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            transition: 0.15s;
+            background: #fafcff;
+        }
+
+        .essay-textarea:focus {
+            border-color: #2a7de1;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.1);
+        }
+
+        /* Feedback / Results */
+        .feedback {
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct-fb {
+            background: #e3f5f1;
+            border-left: 5px solid #2a9d8f;
+            color: #1a5a50;
+        }
+
+        .feedback.wrong-fb {
+            background: #fde8e4;
+            border-left: 5px solid #e76f51;
+            color: #7a3424;
+        }
+
+        .feedback.essay-fb {
+            background: #f0f4fe;
+            border-left: 5px solid #2a7de1;
+            color: #1f3a6b;
+        }
+
+        .model-answer {
+            margin-top: 8px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            border: 1px dashed #acc0db;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* Score Panel */
+        .score-panel {
+            background: #1a2b4c;
+            color: white;
+            padding: 18px 25px;
+            border-radius: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .score-text {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .score-text span {
+            font-size: 26px;
+            color: #f4d03f;
+        }
+
+        .score-detail {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .loader {
+            text-align: center;
+            padding: 60px 0;
+            color: #5e6f8d;
+            font-size: 18px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .control-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            .timer-section {
+                justify-content: center;
+            }
+            .submit-btn {
+                width: 100%;
+            }
+            .q-header {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="app">
+        <h1>📚 LIS 206 Practice Quiz</h1>
+        <div class="subtitle">Based on Management of Library & Information Centres</div>
+
+        <!-- Controls -->
+        <div class="control-bar">
+            <div class="timer-section">
+                <span class="timer-label">⏱ Timer:</span>
+                <button class="timer-btn" data-minutes="15">15 min</button>
+                <button class="timer-btn" data-minutes="20">20 min</button>
+                <button class="timer-btn active" data-minutes="30">30 min</button>
+                <span class="timer-display" id="timerDisplay">30:00</span>
+            </div>
+            <button class="submit-btn" id="submitBtn">Submit & Grade</button>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer">
+            <div class="loader">Loading your questions from <strong>questions.md</strong> ...</div>
+        </div>
+
+        <!-- Score Panel (hidden initially) -->
+        <div id="scorePanel" class="score-panel hidden">
+            <div class="score-text">🏆 Score: <span id="scoreValue">0</span>%</div>
+            <div class="score-detail" id="scoreDetail">0 / 0 correct</div>
+        </div>
+    </div>
+
+    <script>
+        // ---------- GLOBALS ----------
+        let questions = [];
+        let timerInterval = null;
+        let timeRemaining = 30 * 60; // seconds
+        let isSubmitted = false;
+
+        // DOM refs
+        const container = document.getElementById('questionsContainer');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const submitBtn = document.getElementById('submitBtn');
+        const scorePanel = document.getElementById('scorePanel');
+        const scoreValue = document.getElementById('scoreValue');
+        const scoreDetail = document.getElementById('scoreDetail');
+
+        // ---------- MARKDOWN PARSER ----------
+        function parseMarkdownToQuestions(mdText) {
+            const blocks = mdText.split(/---\s*/).filter(b => b.trim() !== '');
+            const parsed = [];
+
+            for (const block of blocks) {
+                const lines = block.split('\n').map(l => l.trim()).filter(l => l !== '');
+                if (lines.length < 2) continue;
+
+                let type = 'Essay';
+                let text = '';
+                let options = [];
+                let correct = '';
+                let modelAnswer = '';
+
+                // Extract title (first line)
+                let title = lines[0].replace(/^#+\s*/, '').trim();
+
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i];
+                    const lower = line.toLowerCase();
+
+                    if (lower.startsWith('**type:**') || lower.startsWith('type:')) {
+                        const val = line.replace(/^\*\*type:\*\*/i, '').replace(/^type:/i, '').trim();
+                        if (val.toLowerCase().includes('mcq')) type = 'MCQ';
+                        else if (val.toLowerCase().includes('essay')) type = 'Essay';
+                    } else if (lower.startsWith('**text:**') || lower.startsWith('text:')) {
+                        text = line.replace(/^\*\*text:\*\*/i, '').replace(/^text:/i, '').trim();
+                    } else if (lower.startsWith('**options:**') || lower.startsWith('options:')) {
+                        // collect all subsequent lines that start with - or number
+                        let j = i + 1;
+                        const optLines = [];
+                        while (j < lines.length && (lines[j].startsWith('-') || /^\d+\./.test(lines[j]))) {
+                            optLines.push(lines[j].replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '').trim());
+                            j++;
+                        }
+                        options = optLines;
+                        i = j - 1; // skip ahead
+                    } else if (lower.startsWith('**correct:**') || lower.startsWith('correct:')) {
+                        correct = line.replace(/^\*\*correct:\*\*/i, '').replace(/^correct:/i, '').trim().toUpperCase();
+                    } else if (lower.startsWith('**model answer:**') || lower.startsWith('model answer:')) {
+                        modelAnswer = line.replace(/^\*\*model answer:\*\*/i, '').replace(/^model answer:/i, '').trim();
+                        // collect subsequent lines until next key or end
+                        let j = i + 1;
+                        const extraLines = [];
+                        while (j < lines.length && !lines[j].toLowerCase().includes('**') && !lines[j].toLowerCase().includes(':')) {
+                            extraLines.push(lines[j]);
+                            j++;
+                        }
+                        if (extraLines.length > 0) modelAnswer += ' ' + extraLines.join(' ');
+                        i = j - 1;
+                    }
+                }
+
+                // If no explicit text, use the title as fallback
+                if (!text && title) text = title;
+
+                parsed.push({
+                    type: type,
+                    text: text,
+                    options: options,
+                    correct: correct,
+                    modelAnswer: modelAnswer,
+                    // For MCQ, we store correct letter
+                });
+            }
+            return parsed;
+        }
+
+        // ---------- LOAD & RENDER ----------
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.md');
+                if (!response.ok) throw new Error('Failed to load questions.md');
+                const md = await response.text();
+                questions = parseMarkdownToQuestions(md);
+                if (questions.length === 0) throw new Error('No questions parsed. Check your markdown format.');
+                renderQuestions();
+            } catch (err) {
+                container.innerHTML = `
+                    <div style="padding:30px;background:#fdf0ed;border-radius:16px;border:1px solid #f5c6c6;">
+                        <strong>⚠️ Error loading questions:</strong> ${err.message}
+                        <br><br>
+                        Make sure <code>questions.md</code> is in the same folder as this HTML file.
+                        <br><br>
+                        <strong>Example format:</strong>
+                        <pre style="background:#eee;padding:10px;border-radius:8px;font-size:13px;">
+## Question 1
+**Type:** MCQ
+**Text:** What is 2+2?
+**Options:**
+- A) 3
+- B) 4
+- C) 5
+**Correct:** B
+---
+## Question 2
+**Type:** Essay
+**Text:** Explain the water cycle.
+**Model Answer:** Evaporation, condensation, precipitation.
+                        </pre>
+                    </div>
+                `;
+            }
+        }
+
+        function renderQuestions() {
+            let html = '';
+            questions.forEach((q, index) => {
+                const num = index + 1;
+                html += `<div class="question-block" id="qblock-${index}" data-index="${index}">`;
+                html += `<div class="q-header">
+                            <span class="q-number">Question ${num}</span>
+                            <span class="q-type">${q.type}</span>
+                        </div>`;
+                html += `<div class="q-text">${escapeHtml(q.text)}</div>`;
+
+                if (q.type === 'MCQ') {
+                    html += `<div class="options-group">`;
+                    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    q.options.forEach((opt, oi) => {
+                        const letter = letters[oi];
+                        html += `
+                            <div class="option-item">
+                                <input type="radio" name="q_${index}" value="${letter}" id="q${index}_${letter}">
+                                <label for="q${index}_${letter}"><strong>${letter}.</strong> ${escapeHtml(opt)}</label>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                } else {
+                    // Essay
+                    html += `<textarea class="essay-textarea" id="essay_${index}" placeholder="Type your answer here..."></textarea>`;
+                }
+
+                // Feedback div (hidden initially)
+                html += `<div class="feedback" id="fb_${index}"></div>`;
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Helper
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ---------- TIMER ----------
+        function startTimer(minutes) {
+            if (timerInterval) clearInterval(timerInterval);
+            timeRemaining = minutes * 60;
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    alert('⏰ Time is up! Submitting your quiz...');
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeRemaining / 60);
+            const secs = timeRemaining % 60;
+            timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            if (timeRemaining < 60) {
+                timerDisplay.classList.add('warning');
+            } else {
+                timerDisplay.classList.remove('warning');
+            }
+        }
+
+        // ---------- TIMER BUTTONS ----------
+        document.querySelectorAll('.timer-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (isSubmitted) return;
+                document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const mins = parseInt(this.dataset.minutes, 10);
+                if (timerInterval) clearInterval(timerInterval);
+                startTimer(mins);
+            });
+        });
+
+        // ---------- SUBMIT & GRADE ----------
+        function submitQuiz() {
+            if (isSubmitted) return;
+            isSubmitted = true;
+            submitBtn.disabled = true;
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            let correctCount = 0;
+            let totalMCQ = 0;
+            let totalEssay = 0;
+
+            questions.forEach((q, index) => {
+                const block = document.getElementById(`qblock-${index}`);
+                const fb = document.getElementById(`fb_${index}`);
+                let isCorrect = false;
+                let userAnswer = '';
+
+                if (q.type === 'MCQ') {
+                    totalMCQ++;
+                    const selected = document.querySelector(`input[name="q_${index}"]:checked`);
+                    if (selected) {
+                        userAnswer = selected.value;
+                        if (userAnswer === q.correct) {
+                            isCorrect = true;
+                            correctCount++;
+                            block.classList.add('correct');
+                            fb.className = 'feedback show correct-fb';
+                            fb.innerHTML = `✅ <strong>Correct!</strong> The right answer is <strong>${q.correct}</strong>.`;
+                        } else {
+                            block.classList.add('wrong');
+                            fb.className = 'feedback show wrong-fb';
+                            fb.innerHTML = `❌ <strong>Incorrect.</strong> Your answer: ${userAnswer}. The correct answer is <strong>${q.correct}</strong>.`;
+                        }
+                    } else {
+                        block.classList.add('wrong');
+                        fb.className = 'feedback show wrong-fb';
+                        fb.innerHTML = `⚠️ You did not select an answer. The correct answer is <strong>${q.correct}</strong>.`;
+                    }
+                    // Disable radio buttons after submission
+                    block.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+                } else {
+                    // Essay
+                    totalEssay++;
+                    const textarea = document.getElementById(`essay_${index}`);
+                    userAnswer = textarea.value.trim() || '(No answer provided)';
+                    const model = q.modelAnswer || 'No model answer provided.';
+                    fb.className = 'feedback show essay-fb';
+                    fb.innerHTML = `
+                        <strong>📝 Your Essay Answer:</strong>
+                        <div style="background:white;padding:10px;border-radius:8px;margin:8px 0;border:1px solid #d0d9e8;">${escapeHtml(userAnswer)}</div>
+                        <strong>💡 Model Answer for Reference:</strong>
+                        <div class="model-answer">${escapeHtml(model)}</div>
+                        <div style="margin-top:8px;font-size:14px;opacity:0.7;">(Essays are self-assessed. Compare your answer with the model above.)</div>
+                    `;
+                    textarea.disabled = true;
+                    block.classList.add('correct'); // neutral color
+                }
+            });
+
+            // Show score
+            const totalQuestions = questions.length;
+            const percentage = totalMCQ > 0 ? Math.round((correctCount / totalMCQ) * 100) : 0;
+            const displayScore = totalMCQ > 0 ? percentage : 'N/A (No MCQ)';
+            scoreValue.textContent = displayScore;
+            scoreDetail.textContent = `${correctCount} / ${totalMCQ} MCQ correct (${totalEssay} essay question(s) submitted)`;
+            scorePanel.classList.remove('hidden');
+
+            // Scroll to score
+            scorePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        submitBtn.addEventListener('click', submitQuiz);
+
+        // ---------- INIT ----------
+        // Default timer: 30 min
+        startTimer(30);
+        loadQuestions();
+    </script>
+
+</body>
+</html>
