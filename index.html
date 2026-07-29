@@ -759,6 +759,7 @@
                         <button class="btn-tab" data-course="LIS208">🎓 LIS 208 (Information Tech)</button>
                         <button class="btn-tab" data-course="LIS210">🎓 LIS 210 (Classification & DDC)</button>
                         <button class="btn-tab" data-course="LIS212">🎓 LIS 212 (User Studies)</button>
+                        <button class="btn-tab" data-course="LIS214">🎓 LIS 214 (Bibliography & Citation)</button>
                     </div>
                 </div>
 
@@ -995,6 +996,15 @@
             { type: 'Essay', category: 'Hard', text: 'Formulate a strategic plan for developing an inclusive, barrier-free Information Service Environment for patrons with physical, sensory, and cognitive disabilities.', modelAnswer: 'Strategic plan includes: (1) Architectural Accessibility (wheelchair ramps, wide aisles); (2) Assistive Technology (screen readers JAWS/NVDA, Braille embossers, height-adjustable desks); (3) Accessible Digital Content (WCAG 2.1 AA compliance); and (4) Staff Etiquette Training.' }
         ];
 
+        const FALLBACK_QUESTIONS_LIS214 = [
+            { type: 'Essay', category: 'Compulsory Assignment', text: 'Construct exact reference entries in APA (7th Edition), MLA (9th Edition), Chicago (Author-Date), and Harvard styles for a single-authored book: Nkata U. Kalu (2020), "Fundamentals of Bibliography and Information Organization", 2nd ed., published in Abuja by National Open University of Nigeria Press.', modelAnswer: 'APA 7th: Kalu, N. U. (2020). Fundamentals of bibliography and information organization (2nd ed.). National Open University of Nigeria Press.\nMLA 9th: Kalu, Nkata U. Fundamentals of Bibliography and Information Organization. 2nd ed., National Open University of Nigeria Press, 2020.\nChicago (Author-Date): Kalu, Nkata U. 2020. Fundamentals of Bibliography and Information Organization. 2nd ed. Abuja: National Open University of Nigeria Press.\nHarvard: Kalu, N.U. (2020) Fundamentals of bibliography and information organization. 2nd edn. Abuja: National Open University of Nigeria Press.' },
+            { type: 'Essay', category: 'Compulsory Assignment', text: 'Format a multi-authored journal article with DOI in APA (7th), MLA (9th), Chicago (Author-Date), and Harvard styles: Authors: Okeoghene Mayowa-Adebara, Nancy E. Achebe, and Ugonna Vivian Ailakhu (2022). Title: "Digital preservation challenges in academic libraries of West Africa". Journal: African Journal of Library, Archival and Information Science, Vol. 32, No. 2, pp. 145-160. DOI: https://doi.org/10.1016/j.ajlais.2022.04.012.', modelAnswer: 'APA 7th: Mayowa-Adebara, O., Achebe, N. E., & Ailakhu, U. V. (2022). Digital preservation challenges in academic libraries of West Africa. African Journal of Library, Archival and Information Science, 32(2), 145–160. https://doi.org/10.1016/j.ajlais.2022.04.012\nMLA 9th: Mayowa-Adebara, Okeoghene, et al. "Digital Preservation Challenges in Academic Libraries of West Africa." African Journal of Library, Archival and Information Science, vol. 32, no. 2, 2022, pp. 145–160. DOI.org, https://doi.org/10.1016/j.ajlais.2022.04.012.' },
+            { type: 'Essay', category: 'Compulsory Assignment', text: 'Format an edited book chapter in APA 7th, MLA 9th, Chicago (Author-Date), and Harvard: Author: Oladipupo S. Oladips (2023). Chapter: "Application of machine learning in automatic indexing and subject classification". Editors: Emmanuel O. Eguavoen & Grace A. Aina. Book: Modern Trends in Library and Information Science (pp. 88-112). Publisher: Academic Press West Africa, Lagos.', modelAnswer: 'APA 7th: Oladips, O. S. (2023). Application of machine learning in automatic indexing and subject classification. In E. O. Eguavoen & G. A. Aina (Eds.), Modern trends in library and information science (pp. 88–112). Academic Press West Africa.\nMLA 9th: Oladips, Oladipupo S. "Application of Machine Learning in Automatic Indexing and Subject Classification." Modern Trends in Library and Information Science, edited by Emmanuel O. Eguavoen and Grace A. Aina, Academic Press West Africa, 2023, pp. 88–112.' },
+            { type: 'Essay', category: 'Easy', text: 'Differentiate clearly between Bibliography and Reference List according to LIS 214 lecture notes.', modelAnswer: 'A Reference List contains only sources explicitly cited or quoted directly within the body of a research text. A Bibliography is a broader, comprehensive descriptive list of all consulted or relevant materials on a given subject, whether directly cited in text or not.' },
+            { type: 'Essay', category: 'Easy', text: 'Systematically define and compare Enumerative (Systematic) Bibliography, Descriptive Bibliography, Analytical Bibliography, Historical Bibliography, and Textual Bibliography.', modelAnswer: 'Enumerative/Systematic Bibliography lists and categorizes books in a logical order by author, subject, or period. Descriptive Bibliography details physical characteristics (full name, exact title, collation, publisher). Analytical Bibliography analyzes paper, typography, and production history. Historical Bibliography explores the evolution of printing, binding, and paper-making over time. Textual Bibliography evaluates how printing/editing processes affected textual validity.' },
+            { type: 'Essay', category: 'Hard', text: 'Identify and correct all technical formatting errors in this flawed APA 7th entry: Kalu, Nkata U., "Fundamentals of Bibliography and Information Organization", Abuja: NOUN Press, (2020).', modelAnswer: 'Errors: Title in quotation marks instead of italics; wrong placement of year at end; city included (APA 7th omits city); author full name instead of initials.\nCorrect APA 7th: Kalu, N. U. (2020). Fundamentals of bibliography and information organization. National Open University of Nigeria Press.' }
+        ];
+
         // Course Registry
         const COURSES = {
             'LIS206': {
@@ -1058,6 +1068,18 @@
                     { id: 'Essay', label: 'ESSAY ONLY' }
                 ],
                 fallback: FALLBACK_QUESTIONS_LIS212
+            },
+            'LIS214': {
+                code: 'LIS 214 / LIS 207',
+                title: 'BIBLIOGRAPHY & CITATION TECHNIQUES',
+                subTitle: 'Bibliography & Citation Techniques (LIS 214 / LIS 207)',
+                file: 'lis214_questions.md',
+                categories: ['ALL', 'Compulsory Assignment', 'Easy', 'Hard'],
+                qtypes: [
+                    { id: 'ALL', label: 'ALL ESSAYS' },
+                    { id: 'Essay', label: 'ESSAY ONLY' }
+                ],
+                fallback: FALLBACK_QUESTIONS_LIS214
             }
         };
 
