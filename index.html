@@ -760,6 +760,7 @@
                         <button class="btn-tab" data-course="LIS210">🎓 LIS 210 (Classification & DDC)</button>
                         <button class="btn-tab" data-course="LIS212">🎓 LIS 212 (User Studies)</button>
                         <button class="btn-tab" data-course="LIS214">🎓 LIS 214 (Bibliography & Citation)</button>
+                        <button class="btn-tab" data-course="LIS204">🎓 LIS 204 (MIS in Libraries)</button>
                     </div>
                 </div>
 
@@ -1080,6 +1081,18 @@
                     { id: 'Essay', label: 'ESSAY ONLY' }
                 ],
                 fallback: FALLBACK_QUESTIONS_LIS214
+            },
+            'LIS204': {
+                code: 'LIS 204',
+                title: 'MANAGEMENT INFORMATION SYSTEM (MIS) IN LIBRARIES',
+                subTitle: 'Management Information System (MIS) in Libraries (LIS 204)',
+                file: 'lis204_questions.md',
+                categories: ['ALL', 'Compulsory Class Assignment', 'Methodology', 'Management Structure', 'IT Ethos'],
+                qtypes: [
+                    { id: 'ALL', label: 'ALL ESSAYS' },
+                    { id: 'Essay', label: 'ESSAY ONLY' }
+                ],
+                fallback: FALLBACK_QUESTIONS_LIS204
             }
         };
 
