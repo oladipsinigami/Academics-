@@ -1,7 +1,3 @@
-# Exclude large PDF files (>100MB causes git push rejection on GitHub)
-*.pdf
-*.docx
-
 # Temporary / System files
 scratch/
 .system_generated/
