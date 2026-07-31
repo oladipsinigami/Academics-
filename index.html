@@ -780,6 +780,20 @@
                     </div>
                 </div>
 
+                <!-- PDF & DOCX Courseware Downloads Bar on Main Setup Card -->
+                <div style="margin-top: 20px; padding: 18px; background: var(--bg-body); border: 1px solid var(--accent-cyan); box-shadow: 0 0 15px var(--accent-glow);" id="setupPdfDownloadsRow">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                        <div>
+                            <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent-cyan); display: block; text-transform: uppercase;">
+                                📥 DOWNLOAD OFFICIAL PDF / DOCX COURSE LECTURE NOTES:
+                            </span>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);">Download full PDF lecture notes directly for offline study.</span>
+                        </div>
+                        <div id="setupPdfDownloadsContainer" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="filter-grid">
                     <div class="filter-line">
                         <span class="filter-label">Q-TYPE:</span>
@@ -1478,6 +1492,7 @@
 
             renderCategoryTabs(courseKey);
             renderQTypeTabs(courseKey);
+            renderPdfDownloadButtons(courseKey, document.getElementById('setupPdfDownloadsContainer'));
 
             try {
                 const res = await fetch(course.file);
@@ -2160,6 +2175,24 @@ Library Classification is the systematic arrangement of human knowledge and libr
             return stored !== null ? stored : (COURSE_NOTES[courseKey] || '');
         }
 
+        function renderPdfDownloadButtons(courseKey, containerElement) {
+            if (!containerElement) return;
+            const files = COURSE_FILES[courseKey] || [];
+            if (files.length === 0) {
+                containerElement.innerHTML = `<span style="font-size:0.78rem; color:var(--text-muted);">No attached PDF files for this module.</span>`;
+            } else {
+                let html = '';
+                files.forEach(f => {
+                    html += `
+                        <a href="${encodeURI(f.file)}" download="${escapeHtml(f.file)}" target="_blank" class="btn-start-ujet" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; padding:8px 16px; background:var(--bg-card); color:var(--text-heading); border:1px solid var(--accent-cyan); box-shadow:0 0 10px var(--accent-glow);">
+                            ${escapeHtml(f.name)}
+                        </a>
+                    `;
+                });
+                containerElement.innerHTML = html;
+            }
+        }
+
         function switchNotesCourse(courseKey) {
             if (!COURSES[courseKey]) return;
             currentNotesCourseKey = courseKey;
@@ -2173,23 +2206,7 @@ Library Classification is the systematic arrangement of human knowledge and libr
                 notesCourseHeading.textContent = `${course.code}: ${course.title}`;
             }
 
-            // Render PDF Downloads
-            if (pdfDownloadsContainer) {
-                const files = COURSE_FILES[courseKey] || [];
-                if (files.length === 0) {
-                    pdfDownloadsContainer.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted);">No attached PDF files for this module.</span>`;
-                } else {
-                    let html = '';
-                    files.forEach(f => {
-                        html += `
-                            <a href="${escapeHtml(f.file)}" download="${escapeHtml(f.file)}" target="_blank" class="btn-sec-ujet" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; border-color:var(--accent-cyan); color:var(--text-heading);">
-                                ${escapeHtml(f.name)}
-                            </a>
-                        `;
-                    });
-                    pdfDownloadsContainer.innerHTML = html;
-                }
-            }
+            renderPdfDownloadButtons(courseKey, pdfDownloadsContainer);
 
             isEditingNote = false;
             if (notesEditBox) notesEditBox.style.display = 'none';
