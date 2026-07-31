@@ -1081,7 +1081,17 @@
             { type: 'Essay', category: 'Information Management', text: 'Explain how modern Library and Information Management (LIM) incorporates Artificial Intelligence (AI) and Machine Learning to automate technical workflows.', modelAnswer: 'Modern LIM integrates AI/ML to automate metadata auto-generation, enable Natural Language Processing (NLP) for semantic search, deploy 24/7 reference chatbots, analyze usage analytics, and optimize electronic resource management (ERM).' },
             { type: 'Essay', category: 'Library Operations', text: 'Differentiate clearly between Library RULES ("Dos and Don\'ts") and Library REGULATIONS (Administrative frameworks & penalties).', modelAnswer: 'Library RULES define behavioral and operational boundaries for patrons (e.g. maintaining silence, no food/drinks, showing ID, leaving consulted books on tables). Library REGULATIONS are formal administrative frameworks governing transactions and penalties (e.g. circulation policies, borrowing limits, overdue fines, membership eligibility, and copyright compliance).' },
             { type: 'Essay', category: 'Management Theory', text: 'Compare the roles and qualifications of Professional Librarians versus Para-professional Staff in academic libraries.', modelAnswer: 'Professional Librarians hold formal LIS degrees (B.Sc/MLIS/Ph.D) and manage strategic planning, collection development, complex cataloging, systems, and advanced reference. Para-professionals (Library Assistants/Technicians) hold diplomas or certificates and support routine technical operations like circulation desk management, shelving, and basic cataloging.' },
-            { type: 'Essay', category: 'Management Theory', text: 'Explain Henri Fayol\'s principles of "Unity of Command" vs. "Unity of Direction" and why confusing them harms organizational structure.', modelAnswer: 'Unity of Command states that each employee should receive orders from ONLY ONE superior to prevent conflicting instructions. Unity of Direction states that an entire organization should follow ONE unified plan under ONE manager for a specific objective. Confusing them leads to dual reporting lines, conflicting priorities, and employee confusion.' }
+            { type: 'Essay', category: 'Management Theory', text: 'Explain Henri Fayol\'s principles of "Unity of Command" vs. "Unity of Direction" and why confusing them harms organizational structure.', modelAnswer: 'Unity of Command states that each employee should receive orders from ONLY ONE superior to prevent conflicting instructions. Unity of Direction states that an entire organization should follow ONE unified plan under ONE manager for a specific objective. Confusing them leads to dual reporting lines, conflicting priorities, and employee confusion.' },
+            { type: 'Essay', category: 'Information Management', text: 'Explain the concept of Information Overload and outline key management strategies an academic library can employ to mitigate it.', modelAnswer: 'Information Overload occurs when the volume of accessible information exceeds a user\'s processing capacity, leading to decision paralysis and inefficiency. Academic libraries mitigate this via curated LibGuides, faceted search filters, information literacy training, and automated SDI services.' },
+            { type: 'Essay', category: 'Management Theory', text: 'Analyze Henri Fayol\'s principle of "Scalar Chain" and explain how "Gang Plank" can be utilized in library management to prevent operational bottlenecks.', modelAnswer: 'The Scalar Chain represents the unbroken formal hierarchy of authority. The Gang Plank is a bridge allowing peers at the same organizational level (e.g. Head of Cataloging and Head of Circulation) to communicate directly with superior permission, bypassing vertical delays.' },
+            { type: 'Essay', category: 'Library Operations', text: 'Differentiate between Library Rules, Library Regulations, and Library Routines, giving two practical examples for each.', modelAnswer: 'Rules: Behavioral parameters (silence, no food). Regulations: Administrative frameworks (borrowing limits, overdue fines). Routines: Daily operational workflows (shelf-reading, patron sweeps).' },
+            { type: 'Essay', category: 'Management Theory', text: 'Discuss the role of "Controlling" as a core management function in evaluating academic library performance and service quality.', modelAnswer: 'Controlling involves setting standards, measuring performance against metrics (circulation counts, LibQUAL+ surveys), and taking corrective actions such as staff retraining or infrastructure upgrades.' },
+            { type: 'Essay', category: 'Emerging Technologies', text: 'Discuss four practical applications of Artificial Intelligence (AI) and Natural Language Processing (NLP) in modern Library and Information Management.', modelAnswer: 'Applications: (1) Automated metadata tagging; (2) NLP semantic search; (3) 24/7 reference chatbots; (4) Predictive collection analytics and acquisition forecasting.' },
+            { type: 'Essay', category: 'Management Theory', text: 'Evaluate the advantages and disadvantages of Centralization versus Decentralization in managing a university library system with multiple branch libraries.', modelAnswer: 'Centralization offers economies of scale and policy standardization but slower local response. Decentralization empowers branch libraries (Law/Medical) for rapid specialized service but can increase operational costs and inconsistency.' },
+            { type: 'Essay', category: 'Library Operations', text: 'Outline the step-by-step workflow of "Shelf-Reading" and explain why it is vital for efficient information retrieval in open-access libraries.', modelAnswer: 'Workflow: (1) Select shelf section; (2) Read call numbers left-to-right; (3) Re-position misplaced books; (4) Pull damaged volumes. Vital because misplaced books are effectively lost in open-access systems.' },
+            { type: 'Essay', category: 'Strategic Management', text: 'Explain the concept of Strategic Information System Planning (SISP) and its importance in aligning library IT investments with university goals.', modelAnswer: 'SISP aligns IT infrastructure investments (cloud repositories, discovery layers, LMS) with university objectives like expanding ODL distance learning, research impact, and student retention.' },
+            { type: 'Essay', category: 'Disaster & Risk Management', text: 'Describe the essential components of a Library Disaster Management and Preservation Plan for protecting physical and digital assets.', modelAnswer: 'Phases: (1) Prevention/Mitigation (water/fire detectors); (2) Preparedness (offsite backups, emergency kits); (3) Response (salvaging collections, freezing wet books); (4) Recovery (facility restoration and data re-indexing).' },
+            { type: 'Essay', category: 'User Services', text: 'Discuss how Transaction Log Analysis (TLA) is used in user studies to evaluate search behavior and improve library search interfaces.', modelAnswer: 'TLA records digital search interactions (zero-result terms, session length, query paths) unobtrusively to identify user search errors, refine catalog vocabularies, and optimize OPAC search interfaces.' }
         ];
 
         const FALLBACK_QUESTIONS_GNS202 = [
@@ -1512,14 +1522,17 @@
         }
 
         // Render Dynamic Category Tabs
+        // Render Dynamic Category Tabs
         function renderCategoryTabs(courseKey) {
-            const categories = COURSES[courseKey].categories;
             selectedCategory = 'ALL';
+            const uniqueCats = Array.from(new Set(rawQuestions.map(q => q.category).filter(Boolean)));
+            const categories = ['ALL', ...uniqueCats];
+            
             let html = '';
             categories.forEach((cat, idx) => {
                 const activeClass = idx === 0 ? 'active' : '';
                 const label = cat === 'ALL' ? 'ALL TOPICS' : cat.toUpperCase();
-                html += `<button class="btn-tab ${activeClass}" data-category="${cat}">${label}</button>`;
+                html += `<button class="btn-tab ${activeClass}" data-category="${escapeHtml(cat)}">${escapeHtml(label)}</button>`;
             });
             if (categoryFilterContainer) {
                 categoryFilterContainer.innerHTML = html;
@@ -1537,8 +1550,14 @@
 
         // Render Dynamic Q-Type Tabs
         function renderQTypeTabs(courseKey) {
-            const qtypes = COURSES[courseKey].qtypes;
             selectedType = 'ALL';
+            const availableTypes = Array.from(new Set(rawQuestions.map(q => q.type).filter(Boolean)));
+            let qtypes = [{ id: 'ALL', label: 'ALL TYPES' }];
+            
+            if (availableTypes.includes('MCQ')) qtypes.push({ id: 'MCQ', label: 'MCQ ONLY' });
+            if (availableTypes.includes('German')) qtypes.push({ id: 'German', label: 'GERMAN ONLY (FILL-IN)' });
+            if (availableTypes.includes('Essay')) qtypes.push({ id: 'Essay', label: 'ESSAY ONLY' });
+            
             let html = '';
             qtypes.forEach((qt, idx) => {
                 const activeClass = idx === 0 ? 'active' : '';
@@ -1570,10 +1589,6 @@
             if (courseBadgeText) courseBadgeText.textContent = `COURSE: ${course.code}`;
             if (examCourseBadge) examCourseBadge.textContent = `${course.code} ASSESSMENT`;
 
-            renderCategoryTabs(courseKey);
-            renderQTypeTabs(courseKey);
-            renderPdfDownloadButtons(courseKey, document.getElementById('setupPdfDownloadsContainer'));
-
             try {
                 const res = await fetch(course.file);
                 if (!res.ok) throw new Error('Fetch fail');
@@ -1584,13 +1599,18 @@
                 rawQuestions = JSON.parse(JSON.stringify(course.fallback));
             }
 
+            renderCategoryTabs(courseKey);
+            renderQTypeTabs(courseKey);
+            renderPdfDownloadButtons(courseKey, document.getElementById('setupPdfDownloadsContainer'));
+
             const mcqs = rawQuestions.filter(q => q.type === 'MCQ').length;
             const germans = rawQuestions.filter(q => q.type === 'German').length;
             const essays = rawQuestions.filter(q => q.type === 'Essay').length;
             
             let repoStr = `REPOSITORY: ${rawQuestions.length} TOTAL QUESTIONS`;
             if (germans > 0) repoStr = `REPOSITORY: ${mcqs} MCQs + ${germans} GERMAN (FILL-IN)`;
-            else if (essays > 0) repoStr = `REPOSITORY: ${mcqs} MCQs + ${essays} ESSAYS`;
+            else if (essays > 0 && mcqs > 0) repoStr = `REPOSITORY: ${mcqs} MCQs + ${essays} ESSAYS`;
+            else if (essays > 0) repoStr = `REPOSITORY: ${essays} ESSAY QUESTIONS`;
             
             if (repoBadgeText) repoBadgeText.textContent = repoStr;
 
@@ -1654,13 +1674,15 @@
         function applyFilters() {
             let matchingPool = [...rawQuestions];
             
-            if (selectedType !== 'ALL') {
-                matchingPool = matchingPool.filter(q => q.type === selectedType);
+            if (selectedType && selectedType !== 'ALL') {
+                const normType = selectedType.trim().toLowerCase();
+                matchingPool = matchingPool.filter(q => q.type && q.type.trim().toLowerCase() === normType);
             }
 
             let categoryFiltered = [...matchingPool];
-            if (selectedCategory !== 'ALL') {
-                categoryFiltered = categoryFiltered.filter(q => q.category === selectedCategory);
+            if (selectedCategory && selectedCategory !== 'ALL') {
+                const normCat = selectedCategory.trim().toLowerCase();
+                categoryFiltered = categoryFiltered.filter(q => q.category && q.category.trim().toLowerCase() === normCat);
             }
 
             let targetCount = rawQuestions.length;
@@ -1689,6 +1711,10 @@
                         }
                     }
                 }
+            }
+
+            if (activeQuestions.length === 0 && rawQuestions.length > 0) {
+                activeQuestions = rawQuestions.slice(0, Math.min(rawQuestions.length, targetCount || 10));
             }
 
             updateProgress();
