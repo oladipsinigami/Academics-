@@ -523,3 +523,74 @@
 **Category:** Management Theory
 **Text:** Explain the significance of "Esprit de Corps" in building team harmony among diverse library personnel.
 **Model Answer:** Esprit de Corps (Fayol's 14th principle) promotes team spirit, mutual trust, and cohesion across professional librarians, para-professionals, and IT support staff, fostering a collaborative, service-oriented environment.
+
+---
+## Question 51
+**Type:** Essay
+**Category:** Information Management
+**Text:** Explain the concept of Information Overload and outline key management strategies an academic library can employ to mitigate it.
+**Model Answer:** Information Overload occurs when the volume of accessible information exceeds a user's processing capacity, leading to decision paralysis, cognitive stress, and inefficiency. Academic libraries mitigate information overload by: (1) Developing curated LibGuides and subject bibliographies; (2) Implementing faceted search filters and semantic indexing in OPACs; (3) Offering information literacy training to teach critical evaluation and search query refinement; and (4) Utilizing automated content aggregation and selective dissemination of information (SDI) services tailored to faculty research interests.
+
+---
+## Question 52
+**Type:** Essay
+**Category:** Management Theory
+**Text:** Analyze Henri Fayol's principle of "Scalar Chain" and explain how "Gang Plank" can be utilized in library management to prevent operational bottlenecks.
+**Model Answer:** The Scalar Chain represents the unbroken formal hierarchy of authority running from top management down to lower-level employees. While it ensures clear reporting lines, strict adherence can cause delays in cross-departmental communication. Fayol introduced the "Gang Plank" (bridge) to allow peers at the same organizational level (e.g., Head of Cataloging and Head of Circulation) to communicate directly with mutual permission from their superiors, bypassing lengthy vertical channels to resolve urgent operational bottlenecks efficiently.
+
+---
+## Question 53
+**Type:** Essay
+**Category:** Library Operations
+**Text:** Differentiate between Library Rules, Library Regulations, and Library Routines, giving two practical examples for each.
+**Model Answer:** Library Rules are behavioral parameters governing patron conduct (e.g., maintaining absolute silence, prohibiting food/drinks in reading areas). Library Regulations are formal administrative policies and legal frameworks governing services and compliance (e.g., setting borrowing limits to 4 books for 14 days, enforcing copyright fair-use copying limits). Library Routines are daily operational workflows performed by staff to maintain system integrity (e.g., morning shelf-reading, evening patron sweeps and building locking procedures).
+
+---
+## Question 54
+**Type:** Essay
+**Category:** Management Theory
+**Text:** Discuss the role of "Controlling" as a core management function in evaluating academic library performance and service quality.
+**Model Answer:** Controlling involves setting performance standards, measuring actual performance, comparing results against standards, and taking corrective actions. In library management, controlling utilizes quantitative metrics (circulation statistics, gate counts, database download logs) and qualitative feedback (user satisfaction surveys, LibQUAL+ metrics). If actual reference response times or system uptime fall below targeted SLAs, management intervenes by retraining staff, reallocating budget, or upgrading digital infrastructure.
+
+---
+## Question 55
+**Type:** Essay
+**Category:** Emerging Technologies
+**Text:** Discuss four practical applications of Artificial Intelligence (AI) and Natural Language Processing (NLP) in modern Library and Information Management.
+**Model Answer:** Modern LIM integrates AI and NLP to enhance technical operations and user experience: (1) Automated Metadata Generation: AI algorithms extract key topics and auto-assign metadata tags to repository uploads; (2) Semantic Search & Discovery: NLP enables context-aware search queries beyond simple keyword matching; (3) 24/7 AI Reference Chatbots: Virtual assistants handle routine patron inquiries regarding library hours, catalog lookups, and circulation rules; (4) Predictive Collection Analytics: Machine learning analyzes borrowing trends to recommend acquisition strategies and demand forecasting.
+
+---
+## Question 56
+**Type:** Essay
+**Category:** Management Theory
+**Text:** Evaluate the advantages and disadvantages of Centralization versus Decentralization in managing a university library system with multiple branch libraries.
+**Model Answer:** Centralization consolidates decision-making, technical processing (cataloging, acquisitions), and administrative control at main library headquarters. Advantages include economies of scale, standardized policies, and reduced duplication of effort; disadvantages include slower response times to specialized faculty needs. Decentralization empowers branch libraries (e.g., Medical or Law libraries) to make autonomous collection and service decisions tailored to specific faculties, enhancing responsiveness but potentially increasing operational costs and policy inconsistencies.
+
+---
+## Question 57
+**Type:** Essay
+**Category:** Library Operations
+**Text:** Outline the step-by-step workflow of "Shelf-Reading" and explain why it is vital for efficient information retrieval in open-access libraries.
+**Model Answer:** Shelf-reading is the systematic physical inspection of books on shelves to verify they are arranged in exact call number order (Dewey Decimal or Library of Congress). The workflow involves: (1) Selecting a specific row/shelf section; (2) Reading call number labels sequentially left-to-right and top-to-bottom; (3) Re-positioning misfiled volumes to their correct location; and (4) Pulling damaged items for repair. It is vital because a misplaced book in an open-access library is effectively lost to patrons, preventing successful information retrieval.
+
+---
+## Question 58
+**Type:** Essay
+**Category:** Strategic Management
+**Text:** Explain the concept of Strategic Information System Planning (SISP) and its importance in aligning library IT investments with university goals.
+**Model Answer:** SISP is the process of defining long-term information technology strategies that directly support and advance an institution's broader strategic goals. In academic libraries, SISP ensures that investments in cloud repositories, discovery platforms, and campus-wide LMS integrations align with university objectives such as expanding remote learning (ODL), fostering faculty research impact, and enhancing student retention through digital accessibility.
+
+---
+## Question 59
+**Type:** Essay
+**Category:** Disaster & Risk Management
+**Text:** Describe the essential components of a Library Disaster Management and Preservation Plan for protecting physical and digital assets.
+**Model Answer:** A comprehensive Disaster Management Plan includes four phases: (1) Prevention/Mitigation: Regular facility inspections, smoke detectors, water sensors, and fire suppression systems; (2) Preparedness: Staff training, emergency contact trees, off-site digital backups, and disaster response kits; (3) Response: Immediate action during an event (evacuating personnel, salvaging rare collections, freezing water-damaged documents); and (4) Recovery: Restoring damaged facilities, drying wet books, re-indexing corrupted digital databases, and conducting post-incident evaluations.
+
+---
+## Question 60
+**Type:** Essay
+**Category:** User Services
+**Text:** Discuss how Transaction Log Analysis (TLA) is used in user studies to evaluate search behavior and improve library search interfaces.
+**Model Answer:** Transaction Log Analysis (TLA) is an unobtrusive research method that automatically records and analyzes user interactions with digital library systems, including search queries, zero-result terms, click-through rates, and session durations. Librarians analyze TLA data to identify common user search errors, improve controlled vocabularies and cross-references, redesign OPAC interfaces, and optimize search algorithms to better match patron information seeking behavior.
+
