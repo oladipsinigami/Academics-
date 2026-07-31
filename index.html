@@ -578,6 +578,31 @@
             box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
         }
 
+        .pdf-download-btn {
+            background: rgba(0, 240, 255, 0.08);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 10px 18px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: all 0.2s ease;
+        }
+
+        .pdf-download-btn:hover {
+            background: var(--accent-cyan);
+            color: #000000;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
         .btn-end-ujet {
             background: #ff3366;
             color: #ffffff;
@@ -842,6 +867,58 @@
 
                 <div style="margin-top: 32px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 24px;">
                     <button class="btn-start-ujet" id="startExamBtn" style="font-size: 0.9rem; padding: 16px 48px;">▶ START EXAMINATION</button>
+                </div>
+            </section>
+
+            <!-- ALL OFFICIAL PDF & DOCX LECTURE NOTES DIRECT DOWNLOAD GRID -->
+            <section style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 28px; margin-bottom: 40px; box-shadow: var(--card-shadow);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 14px;">
+                    <div>
+                        <h2 style="font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--text-heading); text-transform: uppercase;">
+                            📁 ALL OFFICIAL PDF & DOCX LECTURE NOTES (DIRECT DOWNLOADS)
+                        </h2>
+                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Click any button below to download the official PDF course material directly to your phone or computer.</p>
+                    </div>
+                    <span class="pill-tag" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">12 OFFICIAL LECTURE FILES AVAILABLE</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+                    <a href="Lis%20210.pdf" download="Lis 210.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 210 PDF (Lis 210.pdf)
+                    </a>
+                    <a href="LIS%20204.pdf" download="LIS 204.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 204 PDF (LIS 204.pdf)
+                    </a>
+                    <a href="LIS%20204-%202.pdf" download="LIS 204- 2.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 204 PART 2 PDF (LIS 204- 2.pdf)
+                    </a>
+                    <a href="LIS%20208.pdf" download="LIS 208.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 208 PDF (LIS 208.pdf)
+                    </a>
+                    <a href="LIS%20214.pdf" download="LIS 214.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 214 PDF (LIS 214.pdf)
+                    </a>
+                    <a href="LIS214%20-2.pdf" download="LIS214 -2.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 214 PART 2 PDF (LIS214 -2.pdf)
+                    </a>
+                    <a href="212.pdf" download="212.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 212 PDF (212.pdf)
+                    </a>
+                    <a href="GNS202.pdf" download="GNS202.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD GNS 202 PDF (GNS202.pdf)
+                    </a>
+                    <a href="PMT%20210%20BY%20PHOTOCHEM.pdf" download="PMT 210 BY PHOTOCHEM.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD PMT 210 PHOTOCHEM PDF
+                    </a>
+                    <a href="PMT210(2YRS%20P.QUSTION)%20BY%20PHOTOCHEM.pdf" download="PMT210(2YRS P.QUSTION) BY PHOTOCHEM.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD PMT 210 PAST QS PDF
+                    </a>
+                    <a href="LIS%20206%20FUTA_01.docx" download="LIS 206 FUTA_01.docx" target="_blank" class="pdf-download-btn">
+                        📄 DOWNLOAD LIS 206 FUTA PT 1 DOCX
+                    </a>
+                    <a href="LIS%20206%20FUTA%20PT%202.docx" download="LIS 206 FUTA PT 2.docx" target="_blank" class="pdf-download-btn">
+                        📄 DOWNLOAD LIS 206 FUTA PT 2 DOCX
+                    </a>
                 </div>
             </section>
         </main>
