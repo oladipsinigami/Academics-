@@ -735,6 +735,8 @@
                 </div>
             </a>
             <div class="nav-actions">
+                <button class="btn-tab active" id="navExamBtn" style="padding: 8px 16px;">📝 EXAM PORTAL</button>
+                <button class="btn-tab" id="navNotesBtn" style="padding: 8px 16px;">📚 STUDY NOTES HUB</button>
                 <button class="theme-btn" id="themeBtn">
                     <span id="themeIcon">☀️</span> <span id="themeText">LIGHT MODE</span>
                 </button>
@@ -908,6 +910,57 @@
         </main>
     </div>
 
+    <!-- PAGE 4: STUDY NOTES & COURSEWARE HUB VIEW -->
+    <div id="notesView" class="view-section hidden">
+        <header class="hero-wrap">
+            <h1 class="hero-title">STUDY NOTES & <span class="accent">COURSEWARE HUB</span></h1>
+            <p class="hero-sub">Access, view, update, and download comprehensive course notes and original lecture PDFs across all academic courses. Custom notes edits automatically persist locally in your browser.</p>
+        </header>
+
+        <main style="max-width: 1200px; margin: 0 auto; padding: 0 32px 40px;">
+            <section class="controls-card">
+                <div style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+                    <span class="filter-label" style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent-cyan); display: block; margin-bottom: 8px;">SELECT COURSE NOTES:</span>
+                    <div class="filter-line" id="notesCourseFilterContainer">
+                        <button class="btn-tab active" data-notes-course="LIS206">🎓 LIS 206 (Library Mgmt)</button>
+                        <button class="btn-tab" data-notes-course="GNS202">🎓 GNS 202 / PMT 210 (Economics)</button>
+                        <button class="btn-tab" data-notes-course="LIS208">🎓 LIS 208 (Information Tech)</button>
+                        <button class="btn-tab" data-notes-course="LIS210">🎓 LIS 210 (Classification)</button>
+                        <button class="btn-tab" data-notes-course="LIS212">🎓 LIS 212 (User Studies)</button>
+                        <button class="btn-tab" data-notes-course="LIS214">🎓 LIS 214 (Bibliography)</button>
+                        <button class="btn-tab" data-notes-course="LIS204">🎓 LIS 204 (MIS in Libraries)</button>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-body); border: 1px solid var(--border-color); padding: 20px; margin-bottom: 24px;">
+                    <h3 id="notesCourseHeading" style="font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--text-heading); margin-bottom: 12px; text-transform: uppercase;">
+                        LIS 206: MANAGEMENT OF LIBRARY & INFORMATION CENTRES
+                    </h3>
+                    <div style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 8px;">OFFICIAL LECTURE FILES & DOWNLOADS:</div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;" id="pdfDownloadsContainer">
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button class="btn-sec-ujet" id="toggleEditNoteBtn">✏️ EDIT NOTES</button>
+                        <button class="btn-start-ujet" id="saveNoteBtn" style="display: none; padding: 10px 20px; font-size: 0.75rem;">💾 SAVE UPDATED NOTES</button>
+                        <button class="btn-sec-ujet" id="resetNoteBtn" style="color: var(--accent-gold); border-color: var(--accent-gold);">🔄 RESET TO OFFICIAL DEFAULT</button>
+                    </div>
+                    <button class="btn-start-ujet" id="downloadNoteMdBtn" style="padding: 10px 24px; font-size: 0.75rem;">📥 DOWNLOAD NOTES (.MD)</button>
+                </div>
+
+                <div id="notesDisplayBox" style="background: var(--bg-body); border: 1px solid var(--border-color); padding: 28px; line-height: 1.7; font-size: 0.95rem; color: var(--text-main); max-height: 650px; overflow-y: auto;">
+                </div>
+
+                <div id="notesEditBox" style="display: none;">
+                    <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; color: var(--accent-cyan); display: block; margin-bottom: 8px;">EDITABLE MARKDOWN SOURCE CODE (SAVED LOCALLY IN BROWSER):</span>
+                    <textarea id="notesEditTextarea" class="essay-area" style="min-height: 500px; font-family: monospace; font-size: 0.9rem; line-height: 1.5;"></textarea>
+                </div>
+            </section>
+        </main>
+    </div>
+
     <script>
         // Fallback Question Datasets
         const FALLBACK_QUESTIONS_LIS206 = [
@@ -1004,6 +1057,13 @@
             { type: 'Essay', category: 'Easy', text: 'Differentiate clearly between Bibliography and Reference List according to LIS 214 lecture notes.', modelAnswer: 'A Reference List contains only sources explicitly cited or quoted directly within the body of a research text. A Bibliography is a broader, comprehensive descriptive list of all consulted or relevant materials on a given subject, whether directly cited in text or not.' },
             { type: 'Essay', category: 'Easy', text: 'Systematically define and compare Enumerative (Systematic) Bibliography, Descriptive Bibliography, Analytical Bibliography, Historical Bibliography, and Textual Bibliography.', modelAnswer: 'Enumerative/Systematic Bibliography lists and categorizes books in a logical order by author, subject, or period. Descriptive Bibliography details physical characteristics (full name, exact title, collation, publisher). Analytical Bibliography analyzes paper, typography, and production history. Historical Bibliography explores the evolution of printing, binding, and paper-making over time. Textual Bibliography evaluates how printing/editing processes affected textual validity.' },
             { type: 'Essay', category: 'Hard', text: 'Identify and correct all technical formatting errors in this flawed APA 7th entry: Kalu, Nkata U., "Fundamentals of Bibliography and Information Organization", Abuja: NOUN Press, (2020).', modelAnswer: 'Errors: Title in quotation marks instead of italics; wrong placement of year at end; city included (APA 7th omits city); author full name instead of initials.\nCorrect APA 7th: Kalu, N. U. (2020). Fundamentals of bibliography and information organization. National Open University of Nigeria Press.' }
+        ];
+
+        const FALLBACK_QUESTIONS_LIS204 = [
+            { type: 'Essay', category: 'Compulsory Class Assignment', text: '(a) MIS in Academic Library Decision-Making: Analyze how a Management Information System (MIS) assists library managers and university archivists in making evidence-based administrative decisions regarding budget allocation, collection usage, and staffing.\n(b) Case Study — FUTA Library (Albert Ilemobade Library): Critically evaluate the practical operational impact of implementing a modern MIS in an academic technology library such as the Federal University of Technology, Akure (FUTA) Library.\n(c) MIS vs. Library Automation System: Differentiate clearly between a Library Automation System and a Management Information System (MIS).\n(d) Strategic Planning Process for MIS: Outline the sequential phases of the Strategic Information System Planning (SISP) process.', modelAnswer: '(a) An MIS transforms raw library transactional data into actionable managerial intelligence for budget allocation, collection development, and staffing optimization.\n(b) At FUTA Library, an integrated MIS enables automated e-resource tracking (ScienceDirect, IEEE), predictive circulation management, and institutional repository download analytics.\n(c) An ILS focuses on routine operational transactions (checkout, MARC cataloging). An MIS synthesizes operational data into executive summary reports and decision support.\n(d) SISP phases: 1. Analyzing organizational objectives; 2. Assessing current IT infrastructure; 3. Formulating MIS architecture; 4. Implementation roadmap.' },
+            { type: 'Essay', category: 'Methodology', text: '(a) Evaluate the contradiction between textbook Information System Development (ISD) methods and real-world practice in library automation.\n(b) Define Tacit Method Knowledge in the context of library information system development.\n(c) Explain the three evaluated degrees of method modification in library MIS.', modelAnswer: '(a) Textbook ISD methods assume rigid linear progression, whereas real-world library automation requires flexible, localized adaptations.\n(b) Tacit Method Knowledge is the experiential, intuitive understanding developed by systems librarians through practice.\n(c) 1. Selection path; 2. Combination of methods; 3. Proprietary local methods.' },
+            { type: 'Essay', category: 'Management Structure', text: '(a) Define and compare the four functional types of MIS: Data Bank DMIS, Predictive MIS, Decision-Taking MIS, and Decision-Making MIS.\n(b) Detail the 3-tier Library Management Hierarchy (Top, Middle, Operational levels).\n(c) Analyze downward, upward, and horizontal communication flows.', modelAnswer: '(a) DMIS (centralized record storage); Predictive MIS (forecasting); Decision-Taking MIS (rule-based auto-decisions); Decision-Making MIS (multi-criteria options for executive selection).\n(b) Top (University Librarian - strategic vision); Middle (Heads of Units - tactical execution); Operational (Library Officers - daily transactions).\n(c) Downward (policy directives); Upward (reports/feedback); Horizontal (inter-departmental synergy).' },
+            { type: 'Essay', category: 'IT Ethos', text: 'Explain the three (3) core pillars of the Ethos of Information Technology in library operations: 1. Complexity; 2. Speed; 3. Predictability.', modelAnswer: '1. Complexity: Multi-layered technical architecture and MARC standards.\n2. Speed: Rapid indexing, real-time query retrieval, instant document transmission.\n3. Predictability: Systems are subject to outages/bugs, requiring backups and SLAs.' }
         ];
 
         // Course Registry
@@ -1148,18 +1208,39 @@
         const categoryFilterContainer = document.getElementById('categoryFilterContainer');
         const qtypeFilterContainer = document.getElementById('qtypeFilterContainer');
 
+        const navExamBtn = document.getElementById('navExamBtn');
+        const navNotesBtn = document.getElementById('navNotesBtn');
+        const notesView = document.getElementById('notesView');
+
         // View Switching
         function showView(viewId) {
-            setupView.classList.add('hidden');
-            examView.classList.add('hidden');
-            reportView.classList.add('hidden');
+            if (setupView) setupView.classList.add('hidden');
+            if (examView) examView.classList.add('hidden');
+            if (reportView) reportView.classList.add('hidden');
+            if (notesView) notesView.classList.add('hidden');
 
-            if (viewId === 'setupView') setupView.classList.remove('hidden');
-            if (viewId === 'examView') examView.classList.remove('hidden');
-            if (viewId === 'reportView') reportView.classList.remove('hidden');
+            if (viewId === 'setupView') {
+                if (setupView) setupView.classList.remove('hidden');
+                if (navExamBtn) navExamBtn.classList.add('active');
+                if (navNotesBtn) navNotesBtn.classList.remove('active');
+            }
+            if (viewId === 'examView') {
+                if (examView) examView.classList.remove('hidden');
+            }
+            if (viewId === 'reportView') {
+                if (reportView) reportView.classList.remove('hidden');
+            }
+            if (viewId === 'notesView') {
+                if (notesView) notesView.classList.remove('hidden');
+                if (navNotesBtn) navNotesBtn.classList.add('active');
+                if (navExamBtn) navExamBtn.classList.remove('active');
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        if (navExamBtn) navExamBtn.addEventListener('click', () => showView('setupView'));
+        if (navNotesBtn) navNotesBtn.addEventListener('click', () => { showView('notesView'); switchNotesCourse(selectedCourseKey || 'LIS206'); });
 
         // Theme Toggle
         themeBtn.addEventListener('click', () => {
@@ -1259,13 +1340,11 @@
 
         // Markdown Parser
         function parseMarkdownToQuestions(mdText) {
-            const blocks = mdText.split(/\n---\n/);
+            const blocks = mdText.split(/\r?\n---\r?\n/);
             const parsed = [];
 
             for (const block of blocks) {
-                const lines = block.split('\n').map(l => l.trim()).filter(l => l !== '');
-                if (lines.length < 2) continue;
-
+                const lines = block.split('\n');
                 let type = 'Essay';
                 let category = 'General';
                 let text = '';
@@ -1273,39 +1352,67 @@
                 let correct = '';
                 let modelAnswer = '';
 
-                let title = lines[0].replace(/^#+\s*/, '').trim();
+                let currentField = null;
+                let fieldBuffers = {
+                    text: [],
+                    modelAnswer: [],
+                    category: [],
+                    type: [],
+                    correct: []
+                };
 
-                for (let i = 1; i < lines.length; i++) {
-                    const line = lines[i];
-                    const lower = line.toLowerCase();
+                for (let line of lines) {
+                    const trimmed = line.trim();
+                    const lower = trimmed.toLowerCase();
 
                     if (lower.startsWith('**type:**') || lower.startsWith('type:')) {
-                        const rawT = line.replace(/^\*\*type:\*\*/i, '').replace(/^type:/i, '').trim().toLowerCase();
-                        if (rawT.includes('mcq')) type = 'MCQ';
-                        else if (rawT.includes('german') || rawT.includes('fill')) type = 'German';
-                        else type = 'Essay';
+                        currentField = 'type';
+                        const val = trimmed.replace(/^\*\*type:\*\*/i, '').replace(/^type:/i, '').trim();
+                        if (val) fieldBuffers.type.push(val);
                     } else if (lower.startsWith('**category:**') || lower.startsWith('category:')) {
-                        category = line.replace(/^\*\*category:\*\*/i, '').replace(/^category:/i, '').trim();
+                        currentField = 'category';
+                        const val = trimmed.replace(/^\*\*category:\*\*/i, '').replace(/^category:/i, '').trim();
+                        if (val) fieldBuffers.category.push(val);
                     } else if (lower.startsWith('**text:**') || lower.startsWith('text:')) {
-                        text = line.replace(/^\*\*text:\*\*/i, '').replace(/^text:/i, '').trim();
+                        currentField = 'text';
+                        const val = trimmed.replace(/^\*\*text:\*\*/i, '').replace(/^text:/i, '').trim();
+                        if (val) fieldBuffers.text.push(val);
                     } else if (lower.startsWith('**options:**') || lower.startsWith('options:')) {
-                        let j = i + 1;
-                        const optLines = [];
-                        while (j < lines.length && (lines[j].startsWith('-') || /^\d+\./.test(lines[j]))) {
-                            optLines.push(lines[j].replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '').trim());
-                            j++;
-                        }
-                        options = optLines;
-                        i = j - 1;
+                        currentField = 'options';
                     } else if (lower.startsWith('**correct:**') || lower.startsWith('correct:')) {
-                        correct = line.replace(/^\*\*correct:\*\*/i, '').replace(/^correct:/i, '').trim();
+                        currentField = 'correct';
+                        const val = trimmed.replace(/^\*\*correct:\*\*/i, '').replace(/^correct:/i, '').trim();
+                        if (val) fieldBuffers.correct.push(val);
                     } else if (lower.startsWith('**model answer:**') || lower.startsWith('model answer:')) {
-                        modelAnswer = line.replace(/^\*\*model answer:\*\*/i, '').replace(/^model answer:/i, '').trim();
+                        currentField = 'modelAnswer';
+                        const val = trimmed.replace(/^\*\*model answer:\*\*/i, '').replace(/^model answer:/i, '').trim();
+                        if (val) fieldBuffers.modelAnswer.push(val);
+                    } else if (currentField === 'options') {
+                        if (trimmed.startsWith('-') || /^\d+\./.test(trimmed)) {
+                            options.push(trimmed.replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '').trim());
+                        }
+                    } else if (currentField && fieldBuffers[currentField]) {
+                        if (trimmed !== '') {
+                            fieldBuffers[currentField].push(trimmed);
+                        }
                     }
                 }
 
-                if (!text && title) text = title;
-                parsed.push({ type, category, text, options, correct, modelAnswer });
+                if (fieldBuffers.type.length > 0) {
+                    const rawT = fieldBuffers.type.join(' ').toLowerCase();
+                    if (rawT.includes('mcq')) type = 'MCQ';
+                    else if (rawT.includes('german') || rawT.includes('fill')) type = 'German';
+                    else type = 'Essay';
+                }
+
+                if (fieldBuffers.category.length > 0) category = fieldBuffers.category.join(' ');
+                if (fieldBuffers.correct.length > 0) correct = fieldBuffers.correct.join(' ');
+                text = fieldBuffers.text.join('\n');
+                modelAnswer = fieldBuffers.modelAnswer.join('\n');
+
+                if (text && text.trim().length > 0) {
+                    parsed.push({ type, category, text, options, correct, modelAnswer });
+                }
             }
             return parsed;
         }
@@ -1837,11 +1944,345 @@
             showView('reportView');
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            const d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
+        // ==========================================
+        // STUDY NOTES & COURSEWARE HUB ENGINE
+        // ==========================================
+        const COURSE_FILES = {
+            'LIS206': [
+                { name: '📄 LIS 206 FUTA Lecture Note Part 1 (DOCX)', file: 'LIS 206 FUTA_01.docx' },
+                { name: '📄 LIS 206 FUTA Lecture Note Part 2 (DOCX)', file: 'LIS 206 FUTA PT 2.docx' }
+            ],
+            'GNS202': [
+                { name: '📕 GNS 202 Economics Course Material (PDF)', file: 'GNS202.pdf' },
+                { name: '📕 PMT 210 Photochem Lecture Note (PDF)', file: 'PMT 210 BY PHOTOCHEM.pdf' },
+                { name: '📕 PMT 210 2-Years Past Questions (PDF)', file: 'PMT210(2YRS P.QUSTION) BY PHOTOCHEM.pdf' }
+            ],
+            'LIS208': [
+                { name: '📕 LIS 208 IT Applications in Libraries (PDF)', file: 'LIS 208.pdf' }
+            ],
+            'LIS210': [
+                { name: '📕 LIS 210 Knowledge Organization & Classification (PDF)', file: 'Lis 210.pdf' }
+            ],
+            'LIS212': [
+                { name: '📕 LIS 212 User Studies & Information Needs (PDF)', file: '212.pdf' }
+            ],
+            'LIS214': [
+                { name: '📕 LIS 214 Bibliography & Citation Techniques (PDF)', file: 'LIS 214.pdf' },
+                { name: '📕 LIS 214 Citation Rules Part 2 (PDF)', file: 'LIS214 -2.pdf' }
+            ],
+            'LIS204': [
+                { name: '📕 LIS 204 MIS in Libraries Course Material (PDF)', file: 'LIS 204.pdf' },
+                { name: '📕 LIS 204 MIS Module Part 2 (PDF)', file: 'LIS 204- 2.pdf' }
+            ]
+        };
+
+        const COURSE_NOTES = {
+            'LIS206': `# LIS 206: Management of Library and Information Centres - Complete Study Guide
+
+---
+
+## 1. Information Management (IM)
+Information Management (IM) is the systematic collection, organization, storage, security, distribution, and disposition of information assets within an organization. Its primary purpose is to **ensure the right information reaches the right people at the right time in the right format**.
+
+### The Four Pillars of Information Management
+1. **People**: The creators, managers, and consumers of information.
+2. **Processes**: Workflows, policies, and Standard Operating Procedures (SOPs).
+3. **Technology**: Systems and software used to store and retrieve data.
+4. **Content**: Structured and unstructured information assets.
+
+---
+
+## 2. Principles and Functions of Management
+### The Four Core Functions of Management
+- **Planning**: Defining goals, strategies, and blueprints.
+- **Organizing**: Assigning tasks, grouping activities, establishing authority.
+- **Leading (Directing)**: Motivating personnel and guiding communication.
+- **Controlling**: Monitoring performance against set goals and correcting deviations.
+
+### Henri Fayol's 14 Principles of Management
+Key principles include: Division of Work, Authority & Responsibility, Discipline, **Unity of Command** (orders from ONLY one superior), **Unity of Direction** (one plan under one head), Remuneration, Scalar Chain, Order, Equity, Stability of Tenure, and **Esprit de Corps** (team unity).
+
+---
+
+## 3. Library Routines, Rules, and Regulations
+- **Rules ("Dos and Don'ts")**: Behavioral parameters (silence, no food/drinks, leaving books on study tables).
+- **Regulations**: Administrative frameworks (circulation limits, overdue fines, copyright compliance).
+- **Routines**: Daily operational workflows including opening checks, clearing book drops, discharging, **shelf-reading**, and closing patron sweeps.`,
+
+            'GNS202': `# GNS 202 / PMT 210: Fundamentals of Economics & Management - Study Guide
+
+---
+
+## 1. Core Economic Concepts
+- **Scarcity**: The fundamental economic problem of having limited resources to fulfill unlimited human wants.
+- **Microeconomics**: Focuses on individual decision-making units (consumers, firms, specific markets).
+- **Macroeconomics**: Analyzes economy-wide phenomena (inflation, unemployment, gross domestic product).
+- **Price Mechanism**: The interaction between demand and supply forces determining market equilibrium prices.
+
+---
+
+## 2. Factors of Production & Returns
+1. **Land (Natural Resources)**: Rewarded by **Rent**.
+2. **Labour (Human Effort)**: Rewarded by **Wages and Salaries**.
+3. **Capital (Man-made Assets)**: Rewarded by **Interest**.
+4. **Entrepreneurship**: Rewarded by **Profit**.
+
+---
+
+## 3. Welfare Economics & Utility
+- **Law of Diminishing Marginal Utility**: As consumption increases, the marginal satisfaction derived from each additional unit decreases.
+- **Pareto Criterion**: A policy state where a change improves at least one individual's welfare without making anyone else worse off.`,
+
+            'LIS208': `# LIS 208: Applications of Information Technology in Libraries - Study Guide
+
+---
+
+## 1. Computer System Architecture
+- **Data vs Information**: Data consists of raw, unorganized facts; Information is processed, meaningful data.
+- **Components**: Hardware (physical equipment), Software (programs/instructions), and Peopleware (systems librarians, patrons).
+- **Central Processing Unit (CPU)**: Consists of the Control Unit (CU), Arithmetic Logic Unit (ALU), and Registers.
+
+---
+
+## 2. Computer Generations
+- **1st Gen**: Vacuum Tubes (1940-1956)
+- **2nd Gen**: Transistors (1956-1963)
+- **3rd Gen**: Integrated Circuits (1964-1971)
+- **4th Gen**: Very Large Scale Integration / Microprocessors (1971-Present)
+- **5th Gen**: Ultra Large Scale Integration, AI, and Quantum Computing
+
+---
+
+## 3. Library Automation & ILS
+- **Integrated Library System (ILS)**: Unified software managing Circulation, Cataloging (MARC21, Dublin Core), Serials, and OPAC. Examples: Koha, DSpace.`,
+
+            'LIS210': `# LIS 210: Knowledge Organization & Classification Systems - Study Guide
+
+---
+
+## 1. Definition and Aims
+Library Classification is the systematic arrangement of human knowledge and library documents into specific subject classes placed in logical sequence to ensure maximum usage and subject collocation.
+
+---
+
+## 2. S.R. Ranganathan's Five Laws of Library Science
+1. Books are for use.
+2. Every reader his or her book.
+3. Every book its reader.
+4. **Save the time of the reader.**
+5. The library is a growing organism.
+
+---
+
+## 3. PMEST Facet Formula
+- **P - Personality**: Core fundamental subject entity.
+- **M - Matter**: Physical material substance.
+- **E - Energy**: Action, process, or operation.
+- **S - Space**: Geographical location.
+- **T - Time**: Chronological period.`,
+
+            'LIS212': `# LIS 212: User Studies & Information Needs - Study Guide
+
+---
+
+## 1. Information Need & Behavior
+- **Information Need**: A state of uncertainty or knowledge gap experienced by a user.
+- **Information Seeking Behavior**: The dynamic actions and search strategies undertaken to resolve a need.
+
+---
+
+## 2. Theoretical Models
+- **T.D. Wilson's Model**: Explains information behavior through physiological/affective needs, intervening variables, and activating mechanisms.
+- **Carol Kuhlthau's ISP Model**: 6-stage process (Initiation, Selection, Exploration, Formulation, Collection, Presentation).
+
+---
+
+## 3. Research Methods
+- Questionnaires, Interviews, Focus Groups, and **Transaction Log Analysis (TLA)** (unobtrusive digital log tracking).`,
+
+            'LIS214': `# LIS 214 / LIS 207: Bibliography & Citation Techniques - Study Guide
+
+---
+
+## 1. Citation Styles Quick Reference
+- **APA 7th**: Author-date style. Omits place of publication for books. Uses *et al.* for 3+ authors from 1st citation.
+- **MLA 9th**: Author-page style. Italics for books/journals; quotes for chapters/articles.
+- **Chicago (Author-Date)**: Author year, title, place, publisher.
+- **Harvard**: Author (year) title, edition, city, publisher.
+
+---
+
+## 2. Five Analytical Branches of Bibliography
+1. **Systematic (Enumerative)**: Grouping books logically by author/subject.
+2. **Descriptive**: Detailed physical specifications of book production.
+3. **Analytical (Critical)**: Examining paper, typography, and printing history.
+4. **Historical**: Evolution of printing and papermaking.
+5. **Textual**: Impact of printing errors on text validity.`,
+
+            'LIS204': `# LIS 204: Management Information System (MIS) in Libraries - Study Guide
+
+---
+
+## 1. MIS vs Library Automation
+- **Library Automation (ILS)**: Handles day-to-day routine transactions (check-outs, MARC cataloging).
+- **MIS**: Aggregates operational data to produce analytical summary reports and decision-support for executive leadership.
+
+---
+
+## 2. Four Functional Types of MIS
+1. **Data Bank MIS**: Centralized database record storage.
+2. **Predictive MIS**: Statistical modeling for trend forecasting.
+3. **Decision-Taking MIS**: Automated rule-based decision execution.
+4. **Decision-Making MIS**: Multi-criteria evaluation of options for human executive selection.
+
+---
+
+## 3. SISP & IT Ethos
+- **SISP (Strategic Information System Planning)**: Aligning IT infrastructure with strategic university goals.
+- **Ethos of IT**: Complexity (intricate architecture), Speed (rapid query retrieval), and Predictability (managing system downtime via backups).`
+        };
+
+        let currentNotesCourseKey = 'LIS206';
+        let isEditingNote = false;
+
+        const notesCourseHeading = document.getElementById('notesCourseHeading');
+        const pdfDownloadsContainer = document.getElementById('pdfDownloadsContainer');
+        const notesDisplayBox = document.getElementById('notesDisplayBox');
+        const notesEditBox = document.getElementById('notesEditBox');
+        const notesEditTextarea = document.getElementById('notesEditTextarea');
+        const toggleEditNoteBtn = document.getElementById('toggleEditNoteBtn');
+        const saveNoteBtn = document.getElementById('saveNoteBtn');
+        const resetNoteBtn = document.getElementById('resetNoteBtn');
+        const downloadNoteMdBtn = document.getElementById('downloadNoteMdBtn');
+
+        function getStoredNoteText(courseKey) {
+            const stored = localStorage.getItem('oladips_note_' + courseKey);
+            return stored !== null ? stored : (COURSE_NOTES[courseKey] || '');
+        }
+
+        function switchNotesCourse(courseKey) {
+            if (!COURSES[courseKey]) return;
+            currentNotesCourseKey = courseKey;
+            const course = COURSES[courseKey];
+
+            document.querySelectorAll('#notesCourseFilterContainer .btn-tab').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.notesCourse === courseKey);
+            });
+
+            if (notesCourseHeading) {
+                notesCourseHeading.textContent = `${course.code}: ${course.title}`;
+            }
+
+            // Render PDF Downloads
+            if (pdfDownloadsContainer) {
+                const files = COURSE_FILES[courseKey] || [];
+                if (files.length === 0) {
+                    pdfDownloadsContainer.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted);">No attached PDF files for this module.</span>`;
+                } else {
+                    let html = '';
+                    files.forEach(f => {
+                        html += `
+                            <a href="${escapeHtml(f.file)}" download="${escapeHtml(f.file)}" target="_blank" class="btn-sec-ujet" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; border-color:var(--accent-cyan); color:var(--text-heading);">
+                                ${escapeHtml(f.name)}
+                            </a>
+                        `;
+                    });
+                    pdfDownloadsContainer.innerHTML = html;
+                }
+            }
+
+            isEditingNote = false;
+            if (notesEditBox) notesEditBox.style.display = 'none';
+            if (notesDisplayBox) notesDisplayBox.style.display = 'block';
+            if (saveNoteBtn) saveNoteBtn.style.display = 'none';
+            if (toggleEditNoteBtn) toggleEditNoteBtn.textContent = '✏️ EDIT NOTES';
+
+            const noteText = getStoredNoteText(courseKey);
+            if (notesEditTextarea) notesEditTextarea.value = noteText;
+            if (notesDisplayBox) notesDisplayBox.innerHTML = renderMarkdownToHtml(noteText);
+        }
+
+        function renderMarkdownToHtml(md) {
+            if (!md) return '';
+            let html = md
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/^### (.*$)/gim, '<h3 style="font-family:\'Syne\',sans-serif; font-size:1.1rem; color:var(--accent-cyan); margin:18px 0 8px 0;">$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2 style="font-family:\'Syne\',sans-serif; font-size:1.35rem; color:var(--text-heading); margin:24px 0 12px 0; border-bottom:1px solid var(--border-color); padding-bottom:6px;">$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1 style="font-family:\'Syne\',sans-serif; font-size:1.6rem; color:var(--accent-cyan); margin:28px 0 16px 0;">$1</h1>')
+                .replace(/\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
+                .replace(/\*([^*]+)\*/gim, '<em>$1</em>')
+                .replace(/^---\s*$/gim, '<hr style="border:none; border-top:1px solid var(--border-color); margin:20px 0;">')
+                .replace(/^[-•]\s+(.*$)/gim, '<li style="margin-left:20px; margin-bottom:4px;">$1</li>')
+                .replace(/^(\d+)\.\s+(.*$)/gim, '<li style="margin-left:20px; margin-bottom:4px;" value="$1">$2</li>');
+
+            return html.split('\n\n').map(para => {
+                if (para.trim().startsWith('<h') || para.trim().startsWith('<hr') || para.trim().startsWith('<li')) {
+                    return para;
+                }
+                return `<p style="margin-bottom:12px;">${para.replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+        }
+
+        // Attach Notes Event Listeners
+        document.querySelectorAll('#notesCourseFilterContainer .btn-tab').forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchNotesCourse(this.dataset.notesCourse);
+            });
+        });
+
+        if (toggleEditNoteBtn) {
+            toggleEditNoteBtn.addEventListener('click', () => {
+                isEditingNote = !isEditingNote;
+                if (isEditingNote) {
+                    notesDisplayBox.style.display = 'none';
+                    notesEditBox.style.display = 'block';
+                    saveNoteBtn.style.display = 'inline-block';
+                    toggleEditNoteBtn.textContent = '👁️ VIEW RENDERED NOTES';
+                    notesEditTextarea.focus();
+                } else {
+                    notesDisplayBox.style.display = 'block';
+                    notesEditBox.style.display = 'none';
+                    saveNoteBtn.style.display = 'none';
+                    toggleEditNoteBtn.textContent = '✏️ EDIT NOTES';
+                    notesDisplayBox.innerHTML = renderMarkdownToHtml(notesEditTextarea.value);
+                }
+            });
+        }
+
+        if (saveNoteBtn) {
+            saveNoteBtn.addEventListener('click', () => {
+                const newText = notesEditTextarea.value;
+                localStorage.setItem('oladips_note_' + currentNotesCourseKey, newText);
+                notesDisplayBox.innerHTML = renderMarkdownToHtml(newText);
+                alert(`✅ ${COURSES[currentNotesCourseKey].code} STUDY NOTES UPDATED AND SAVED LOCALLY!`);
+            });
+        }
+
+        if (resetNoteBtn) {
+            resetNoteBtn.addEventListener('click', () => {
+                if (confirm(`Reset ${COURSES[currentNotesCourseKey].code} study notes back to official default?`)) {
+                    localStorage.removeItem('oladips_note_' + currentNotesCourseKey);
+                    switchNotesCourse(currentNotesCourseKey);
+                }
+            });
+        }
+
+        if (downloadNoteMdBtn) {
+            downloadNoteMdBtn.addEventListener('click', () => {
+                const text = getStoredNoteText(currentNotesCourseKey);
+                const filename = `${currentNotesCourseKey}_Study_Notes.md`;
+                const blob = new Blob([text], { type: 'text/markdown;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
         }
 
         updateStaticTimerDisplay(30);
