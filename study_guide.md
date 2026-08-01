@@ -27,21 +27,23 @@ Principles of management are foundational guidelines governing how an organizati
 3. **Leading (Directing)**: Motivating employees, guiding actions, selecting effective communication channels, and resolving conflicts.
 4. **Controlling**: Monitoring performance, comparing it against set goals, and correcting significant deviations to maintain alignment.
 
-### Henri Fayol’s 14 Principles of Management
-1. **Division of Work**: Specialization increases output by making employees more efficient.
-2. **Authority and Responsibility**: Managers must give orders while taking responsibility for outcomes.
-3. **Discipline**: Employees must obey and respect organizational rules.
-4. **Unity of Command**: Every employee receives orders from **only one superior** to avoid conflicting instructions.
-5. **Unity of Direction**: One plan of action guided by one manager to achieve a common objective.
-6. **Subordination of Individual Interests**: Individual or group interests must not supersede organizational goals.
-7. **Remuneration**: Compensation must be fair and satisfying for both employees and the firm.
-8. **Centralization (or Decentralization)**: Balancing the degree of subordinate involvement in decision-making based on organizational needs.
-9. **Scalar Chain**: The clear line of authority from top management down to the lowest ranks (chain of command).
-10. **Order**: People and materials should be in the right place at the right time.
-11. **Equity**: Managers should treat subordinates with kindness and fairness to build loyalty.
-12. **Stability of Tenure of Personnel**: High turnover is inefficient; long-term commitment should be encouraged.
-13. **Initiative**: Encouraging employees to originate and execute plans increases effort and morale.
-14. **Esprit de Corps**: Fostering team spirit builds harmony and unity within the organization.
+### Information Management Life-Cycle (LIS 206 Core Framework)
+1. **Acquisition & Creation**: Gathering internal/external data from databases, research reports, and publishers.
+2. **Organization & Classification**: Indexing, cataloging (MARC21/RDA), and metadata tagging (Dublin Core).
+3. **Storage & Protection**: Securing physical volumes and backing up digital repositories.
+4. **Retrieval & Dissemination**: Providing search tools (OPACs) and reference services.
+5. **Archiving & Disposal**: Retaining permanent historical memory or purging obsolete records.
+
+### Human Resource Management & Discipline in Libraries
+1. **Staffing Categories**:
+   - **Professional Librarians**: Hold formal LIS degrees; manage strategic planning, complex cataloging, and systems.
+   - **Para-professionals**: Support circulation, shelving, and basic cataloging.
+   - **Support Staff**: IT specialists, administrative assistants, security, and facility staff.
+2. **Progressive Disciplinary Staircase**:
+   - **Step 1 - Verbal Warning**: Informal conversation detailing the operational concern.
+   - **Step 2 - Written Warning**: Formal written notice placed in the employee's file.
+   - **Step 3 - Suspension**: Temporary removal from duty (with or without pay) for serious infractions.
+   - **Step 4 - Dismissal/Termination**: Final step for severe misconduct or uncorrected performance.
 
 ---
 

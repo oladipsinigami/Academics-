@@ -110,8 +110,10 @@ Model Answer: A robust User Needs Assessment Framework requires a multi-phase mi
 ### QUESTION 14
 Type: Essay
 Category: Hard
-Text: Discuss the application of Transaction Log Analysis (TLA) as an unobtrusive research method in user studies, highlighting its technical advantages and analytical limitations.
-Model Answer: Transaction Log Analysis (TLA) involves analyzing automatically recorded digital interaction logs from Web-OPACs, digital library portals, and database search engines: (1) Advantages: It is completely unobtrusive (non-reactive), captures real-time actual user search queries (keywords, zero-result terms, session durations, Boolean operators) without self-reporting bias, and handles massive datasets cheaply; (2) Analytical Limitations: TLA records *what* users type but cannot explain *why* they searched or whether they were satisfied with the retrieved results (lacks qualitative context); it cannot easily distinguish between different individuals sharing a public terminal; and raw search logs require heavy cleaning to eliminate automated web crawlers and bot traffic.
+Text: Compare Focus Group Discussions and Direct Observation as qualitative research methods in library user studies, detailing their operational advantages, implementation steps, and limitations.
+Model Answer: Focus Group Discussions (FGD) and Direct Observation provide deep qualitative insights into patron information habits:
+1. Focus Group Discussions (FGD): Interactive guided discussions with small, representative patron groups (6-10 users). Advantages: Uncovers underlying motivations, attitudes, and shared frustrations regarding library services; allows interactive brainstorming. Limitations: Risk of dominant voices influencing group consensus; requires skilled moderation.
+2. Direct Observation: Researchers observe patrons interacting with library spaces, physical card catalogs, or digital search kiosks. Advantages: Records actual, real-time user behavior without self-reporting bias or recall errors. Limitations: Observer effect (Hawthorne effect) where users alter behavior when aware of being watched; time-intensive data collection.
 
 ---
 

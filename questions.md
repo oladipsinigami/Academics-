@@ -26,13 +26,13 @@
 ---
 ## Question 3
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** According to Henri Fayol, which principle states that an employee should receive orders from ONLY ONE superior?
+**Category:** Knowledge Management
+**Text:** Knowledge that is documented, codified, and stored in databases, manuals, and policy handbooks is known as:
 **Options:**
-- A) Unity of Direction
-- B) Unity of Command
-- C) Scalar Chain
-- D) Division of Work
+- A) Tacit Knowledge
+- B) Explicit Knowledge
+- C) Implicit Knowledge
+- D) Informal Knowledge
 **Correct:** B
 
 ---
@@ -98,37 +98,37 @@
 ---
 ## Question 9
 **Type:** MCQ
-**Category:** Library Operations
-**Text:** What does "ERM" stand for in electronic library management?
+**Category:** Information Management
+**Text:** Which of the following is the first stage in the Information Management Life-Cycle according to LIS 206 notes?
 **Options:**
-- A) Electronic Resource Management
-- B) Enterprise Records Module
-- C) Enhanced Retrieval Mechanism
-- D) Electronic Reading Material
-**Correct:** A
+- A) Organization and Classification
+- B) Acquisition and Creation
+- C) Dissemination and Circulation
+- D) Storage and Archiving
+**Correct:** B
 
 ---
 ## Question 10
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which category of library personnel holds formal LIS degrees and handles strategic planning, collection development, and advanced reference?
+**Category:** Information Management
+**Text:** Information Management in Medical Libraries focuses primarily on supporting:
 **Options:**
-- A) Support Staff
-- B) Para-professionals
-- C) Professional Staff (Librarians)
-- D) Administrative Assistants
-**Correct:** C
+- A) Patent filings and commercial trade secrets
+- B) Evidence-based medicine and clinical decision-making
+- C) High school curriculum development
+- D) Entertainment fiction cataloging
+**Correct:** B
 
 ---
 ## Question 11
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which of Henri Fayol's 14 Principles emphasizes promoting team spirit, harmony, and unity among organizational staff?
+**Category:** Human Resource Management
+**Text:** In an academic library, staff members holding formal degrees in Library & Information Science (B.Sc/MLIS) are categorized as:
 **Options:**
-- A) Esprit de Corps
-- B) Equity
-- C) Initiative
-- D) Scalar Chain
+- A) Professional Staff
+- B) Para-professional Staff
+- C) Administrative Support Staff
+- D) Technical Assistants
 **Correct:** A
 
 ---
@@ -194,14 +194,14 @@
 ---
 ## Question 17
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Under Henri Fayol's 14 Principles of Management, which principle states that compensation for work done should be fair and afford satisfaction to both employees and the firm?
+**Category:** Human Resource Management
+**Text:** Which of the following is a primary ground for employee discipline in Library and Information Centres according to LIS 206 notes?
 **Options:**
-- A) Remuneration
-- B) Equity
-- C) Order
-- D) Scalar Chain
-**Correct:** A
+- A) Attending international LIS conferences
+- B) Mishandling of rare or expensive library materials
+- C) Participating in cross-training programs
+- D) Suggesting workflow improvements to unit heads
+**Correct:** B
 
 ---
 ## Question 18
@@ -242,110 +242,110 @@
 ---
 ## Question 21
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which of Henri Fayol's 14 Principles states that individual employee interests should not take precedence over organizational goals?
+**Category:** Human Resource Management
+**Text:** Training that familiarizes newly hired library staff with an institution's specific classification systems, community demographics, and rules is called:
 **Options:**
-- A) Subordination of Individual Interests
-- B) Unity of Command
-- C) Scalar Chain
-- D) Esprit de Corps
-**Correct:** A
+- A) In-Service Training
+- B) Orientation and Induction
+- C) External Development
+- D) Cross-Training
+**Correct:** B
 
 ---
 ## Question 22
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** What is the term for the clear, formal line of authority running from top executive management down to the lowest ranks?
+**Category:** Library Operations
+**Text:** Which library closing routine ensures that unauthorized patrons leave the building prior to locking up?
 **Options:**
-- A) Division of Work
-- B) Scalar Chain
-- C) Order
-- D) Decentralization
+- A) Shelf-reading
+- B) Patron sweep
+- C) Facility checks
+- D) Discharging
 **Correct:** B
 
 ---
 ## Question 23
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which core function of management involves defining goals, establishing strategies, and developing blueprints to coordinate organizational activities?
+**Category:** Information Management
+**Text:** What is the primary focus of Information Management in Corporate and Business Information Centres?
 **Options:**
-- A) Organizing
-- B) Planning
-- C) Leading
-- D) Controlling
+- A) Patient clinical history privacy
+- B) Competitive intelligence and market analysis
+- C) Children's story hour cataloging
+- D) Public lending rights administration
 **Correct:** B
 
 ---
 ## Question 24
 **Type:** MCQ
-**Category:** Library Operations
-**Text:** Which library rule specifically aims to prevent pest damage and accidental spills on rare books and computers?
+**Category:** Knowledge Management
+**Text:** Knowledge based on personal experience, intuition, and reflection-in-action that is difficult to codify is known as:
 **Options:**
-- A) Prohibition of sleeping
-- B) Restricting food and drinks to designated areas
-- C) Displaying valid ID upon entry
-- D) Computer fair-use policies
+- A) Explicit Knowledge
+- B) Tacit Knowledge
+- C) Formal Knowledge
+- D) Public Knowledge
 **Correct:** B
 
 ---
 ## Question 25
 **Type:** MCQ
 **Category:** Library Operations
-**Text:** What is the primary purpose of user ID checks conducted at library entrance and exit gates?
+**Text:** Which routine is performed during morning opening hours in a library?
 **Options:**
-- A) To prevent unauthorized removal of materials and verify patron authorization
-- B) To charge fees for entry
-- C) To count daily foot traffic statistics only
-- D) To grade academic performance
-**Correct:** A
+- A) Patron sweep
+- B) Powering on public workstations, printers, and climate controls
+- C) Locking emergency exit doors
+- D) Activating building security alarms
+**Correct:** B
 
 ---
 ## Question 26
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which category of library staff supports technical operations like circulation, shelving, and basic cataloging without requiring an LIS degree?
+**Category:** Library Operations
+**Text:** Library rules restricting food and drinks in reading areas are primarily designed to:
 **Options:**
-- A) Professional Librarians
-- B) Para-professionals (Library Assistants/Technicians)
-- C) Administrative Executive Officers
-- D) Systems Engineers
+- A) Force patrons to buy food at campus cafeterias
+- B) Prevent pest infestations and accidental spills on library materials
+- C) Reduce noise levels in study halls
+- D) Conserve electric power consumption
 **Correct:** B
 
 ---
 ## Question 27
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which type of staff training involves exposing employees to work across multiple departments to maintain operational continuity?
+**Category:** Human Resource Management
+**Text:** Progressing from Assistant Librarian to Deputy Librarian and University Librarian is an example of:
 **Options:**
-- A) Orientation Training
-- B) Cross-Training
-- C) External Conference Attendance
-- D) Induction
+- A) Progressive Discipline
+- B) Career Path Progression
+- C) Cross-Training Rotation
+- D) Job Specification Review
 **Correct:** B
 
 ---
 ## Question 28
 **Type:** MCQ
 **Category:** Information Management
-**Text:** What type of information assets are stored in rigid, structured tables and relational databases?
+**Text:** Which core pillar of Information Management includes data, documents, e-journals, and institutional research records?
 **Options:**
-- A) Unstructured Content
-- B) Structured Content
-- C) Ephemeral Data
-- D) Meta-Content
+- A) People
+- B) Content
+- C) Processes
+- D) Technology
 **Correct:** B
 
 ---
 ## Question 29
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which Henri Fayol principle encourages employees to originate and carry out operational plans to increase initiative and morale?
+**Category:** Human Resource Management
+**Text:** Evaluating library staff for promotion based on annual performance appraisals, research publications, and service innovation is an example of:
 **Options:**
-- A) Discipline
-- B) Initiative
-- C) Centralization
-- D) Equity
-**Correct:** B
+- A) Merit-based Promotion
+- B) Seniority-based Promotion
+- C) Progressive Discipline
+- D) Informal Orientation
+**Correct:** A
 
 ---
 ## Question 30
@@ -398,13 +398,13 @@
 ---
 ## Question 34
 **Type:** MCQ
-**Category:** Management Theory
-**Text:** Which Fayol principle emphasizes that managers should treat subordinates with kindness and fairness to foster loyalty?
+**Category:** Human Resource Management
+**Text:** Rotating a reference librarian temporarily to the cataloging department to ensure operational continuity is an example of:
 **Options:**
-- A) Equity
-- B) Remuneration
-- C) Scalar Chain
-- D) Order
+- A) Cross-Training
+- B) Progressive Discipline
+- C) Merit Promotion
+- D) Formal Induction
 **Correct:** A
 
 ---
@@ -443,9 +443,9 @@
 ---
 ## Question 39
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Explain Henri Fayol's principles of "Unity of Command" vs. "Unity of Direction" and why confusing them harms organizational structure.
-**Model Answer:** Unity of Command states that each employee should receive orders from ONLY ONE superior to prevent conflicting instructions. Unity of Direction states that an entire organization should follow ONE unified plan under ONE manager for a specific objective. Confusing them leads to dual reporting lines, conflicting priorities, and employee confusion.
+**Category:** Information Management
+**Text:** Compare the goals and execution of Information Management in Academic Libraries versus Corporate Information Centres according to LIS 206 notes.
+**Model Answer:** Academic Libraries focus on supporting learning, teaching, and scholarly research by managing open-access repositories, MARC21/RDA cataloging, and e-journal databases. Corporate Information Centres focus on competitive intelligence, business analytics, trade secret protection, and decision-support for commercial profitability.
 
 ---
 ## Question 40
@@ -457,23 +457,23 @@
 ---
 ## Question 41
 **Type:** Essay
-**Category:** Information Management
-**Text:** What is "Information Overload" and how does structured Information Management prevent it in an enterprise?
-**Model Answer:** Information Overload occurs when an organization receives more data than humans or systems can process efficiently. Structured Information Management prevents overload by establishing the 4 Pillars (People, Processes, Technology, Content) to filter, classify, index, and route the right information to the right users at the right time.
+**Category:** Human Resource Management
+**Text:** Outline the grounds for employee discipline in a library setting and detail the four (4) sequential steps of the Progressive Disciplinary Staircase.
+**Model Answer:** Grounds for discipline include chronic absenteeism, mishandling rare materials, copyright violations, and poor customer service. Sequential steps: (1) Verbal Warning (informal discussion); (2) Written Warning (formal letter placed in file); (3) Suspension (temporary removal from duty); and (4) Termination/Dismissal (final step for severe misconduct).
 
 ---
 ## Question 42
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Detail the criteria used for evaluating staff promotions in university libraries.
-**Model Answer:** Promotions are governed by: (1) Merit-based evaluation (annual performance appraisals, service innovation, leadership); (2) Seniority/longevity (years of service); and (3) Academic/Professional attainment (research publications, advanced degrees, specialized LIS certifications).
+**Category:** Knowledge Management
+**Text:** Define Knowledge Management (KM) and differentiate clearly between Tacit Knowledge and Explicit Knowledge with practical library examples.
+**Model Answer:** KM is the systematic process of creating, capturing, sharing, and leveraging organizational knowledge. Explicit Knowledge is documented and codified (e.g. cataloging manuals, circulation handbooks). Tacit Knowledge is personal, intuitive, and experiential (e.g. an experienced reference librarian's intuitive search strategies or problem-solving skills).
 
 ---
 ## Question 43
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Describe the role of a Systems Librarian and the key technical skills required for the position.
-**Model Answer:** A Systems Librarian oversees digital infrastructure, Integrated Library Systems (ILS/Koha), repository architectures, and electronic resources. Key skills include Master's in LIS/Computer Science, database management, network security, web protocols, and technical adaptability.
+**Category:** Information Management
+**Text:** Detail the five (5) stages of the Information Management Life-Cycle as presented in LIS 206 notes.
+**Model Answer:** (1) Acquisition and Creation: Gathering internal/external data; (2) Organization and Classification: Indexing, cataloging, and metadata tagging; (3) Storage and Protection: Preserving physical/digital assets securely; (4) Retrieval and Dissemination: Providing OPAC search tools and reference access; and (5) Archiving and Disposal: Retaining historical memory or purging obsolete records.
 
 ---
 ## Question 44
@@ -492,9 +492,9 @@
 ---
 ## Question 46
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Explain Fayol's principle of "Stability of Tenure of Personnel" and its economic impact on library management.
-**Model Answer:** High employee turnover causes operational inefficiency, loss of institutional memory, and high recruitment costs. Stability of tenure encourages long-term retention, allowing staff to build expertise in complex classification and digital tools.
+**Category:** Human Resource Management
+**Text:** Detail the criteria for staff promotion in Library and Information Centres as outlined in LIS 206 lecture notes.
+**Model Answer:** Promotion criteria include: (1) Merit-based: Annual performance appraisals, innovation in services, and leadership; (2) Longevity/Seniority: Length of service; and (3) Academic/Professional Attainment: Publishing research papers, obtaining advanced degrees, or earning specialized certifications.
 
 ---
 ## Question 47
@@ -508,21 +508,21 @@
 **Type:** Essay
 **Category:** Library Operations
 **Text:** Describe the closing routines required to secure IT systems and physical premises in a university library.
-**Model Answer:** Closing routines include: (1) Patron sweep at 30, 15, and 5-min intervals; (2) Logging off public terminals and locking network features; (3) Securing physical premises (locking windows, emergency exits, turning off non-essential power); and (4) Activating building security alarms.
+**Model Answer:** Closing routines include: (1) Patron sweep (announcing closing time and ensuring all users have exited); (2) Securing IT systems (logging off public terminals and updating firewalls); and (3) Physical security (locking windows, securing emergency exits, turning off non-essential utilities, and arming building alarm systems).
 
 ---
 ## Question 49
 **Type:** Essay
 **Category:** Library Operations
-**Text:** Discuss how Copyright Compliance and Fair Use policies are enforced in academic libraries.
-**Model Answer:** Libraries enforce copyright compliance by placing warning notices near photocopiers/scanners, establishing fair-use limits on printing/downloading protected texts, licensing electronic databases, and educating patrons on intellectual property.
+**Text:** Detail the daily opening routines and ongoing workflows performed by staff in a modern university library.
+**Model Answer:** Opening routines: Facility checks (powering on workstations, printers, climate controls) and clearing book drops (discharging items returned overnight). Ongoing workflows: Shelving/shelf-reading, circulation desk management (charging/discharging, holds), and collection triage (identifying items needing binding/repair).
 
 ---
 ## Question 50
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Explain the significance of "Esprit de Corps" in building team harmony among diverse library personnel.
-**Model Answer:** Esprit de Corps (Fayol's 14th principle) promotes team spirit, mutual trust, and cohesion across professional librarians, para-professionals, and IT support staff, fostering a collaborative, service-oriented environment.
+**Category:** Knowledge Management
+**Text:** Explain how Knowledge Management (KM) enhances organizational memory, reduces operational errors, and fosters service innovation in libraries.
+**Model Answer:** KM preserves institutional memory when experienced staff retire, prevents repetitive errors by documenting successful problem-solving workflows, and fosters service innovation by enabling staff cross-collaboration and knowledge sharing across departments.
 
 ---
 ## Question 51
@@ -534,9 +534,9 @@
 ---
 ## Question 52
 **Type:** Essay
-**Category:** Management Theory
-**Text:** Analyze Henri Fayol's principle of "Scalar Chain" and explain how "Gang Plank" can be utilized in library management to prevent operational bottlenecks.
-**Model Answer:** The Scalar Chain represents the unbroken formal hierarchy of authority running from top management down to lower-level employees. While it ensures clear reporting lines, strict adherence can cause delays in cross-departmental communication. Fayol introduced the "Gang Plank" (bridge) to allow peers at the same organizational level (e.g., Head of Cataloging and Head of Circulation) to communicate directly with mutual permission from their superiors, bypassing lengthy vertical channels to resolve urgent operational bottlenecks efficiently.
+**Category:** Human Resource Management
+**Text:** Outline the three (3) main categories of staff in Library and Information Centres, detailing their qualifications and primary responsibilities according to LIS 206 notes.
+**Model Answer:** (1) Professional Staff (Librarians): Hold formal LIS degrees; handle strategic planning, collection development, complex cataloging, and systems administration. (2) Para-professional Staff (Technicians/Assistants): Support technical operations like circulation desk charging, shelving, and basic cataloging. (3) Support/Administrative Staff: IT specialists, administrative assistants, security, and maintenance personnel who maintain facility infrastructure.
 
 ---
 ## Question 53
@@ -548,9 +548,9 @@
 ---
 ## Question 54
 **Type:** Essay
-**Category:** Management Theory
+**Category:** Management Functions
 **Text:** Discuss the role of "Controlling" as a core management function in evaluating academic library performance and service quality.
-**Model Answer:** Controlling involves setting performance standards, measuring actual performance, comparing results against standards, and taking corrective actions. In library management, controlling utilizes quantitative metrics (circulation statistics, gate counts, database download logs) and qualitative feedback (user satisfaction surveys, LibQUAL+ metrics). If actual reference response times or system uptime fall below targeted SLAs, management intervenes by retraining staff, reallocating budget, or upgrading digital infrastructure.
+**Model Answer:** Controlling involves setting performance standards, measuring actual performance, comparing results against standards, and taking corrective actions. In library management, controlling utilizes quantitative metrics (circulation statistics, gate counts, database download logs) and qualitative feedback (user satisfaction surveys, suggestion box reviews). If reference response times or system uptime fall below targeted benchmarks, management intervenes by retraining staff, reallocating budget, or upgrading digital infrastructure.
 
 ---
 ## Question 55
@@ -591,6 +591,5 @@
 ## Question 60
 **Type:** Essay
 **Category:** User Services
-**Text:** Discuss how Transaction Log Analysis (TLA) is used in user studies to evaluate search behavior and improve library search interfaces.
-**Model Answer:** Transaction Log Analysis (TLA) is an unobtrusive research method that automatically records and analyzes user interactions with digital library systems, including search queries, zero-result terms, click-through rates, and session durations. Librarians analyze TLA data to identify common user search errors, improve controlled vocabularies and cross-references, redesign OPAC interfaces, and optimize search algorithms to better match patron information seeking behavior.
-
+**Text:** Discuss how Focus Group Discussions (FGD) and User Surveys are used in library user studies to evaluate search behavior and improve library services.
+**Model Answer:** Focus Group Discussions and User Surveys are primary research methods in library user studies. User surveys capture quantitative data regarding user satisfaction, resource usage frequency, and service hurdles across large patron populations. Focus Group Discussions gather qualitative insights from small, interactive user groups to explore research motivations, digital search frustrations, and facility preferences, enabling librarians to redesign search interfaces and refine collection development policies.
