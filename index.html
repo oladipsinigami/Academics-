@@ -686,20 +686,23 @@
         .report-panel.hidden { display: none; }
 
         .report-score-ring {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border: 2px solid var(--accent-cyan);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 6px;
+            padding: 12px;
             margin: 20px auto;
             background: rgba(0, 240, 255, 0.05);
         }
 
         .score-num {
             font-family: 'Syne', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2rem;
+            line-height: 1;
             font-weight: 800;
             color: var(--accent-cyan);
         }
@@ -879,12 +882,15 @@
                         </h2>
                         <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Click any button below to download the official PDF course material directly to your phone or computer.</p>
                     </div>
-                    <span class="pill-tag" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">12 OFFICIAL LECTURE FILES AVAILABLE</span>
+                    <span class="pill-tag" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">13 OFFICIAL LECTURE FILES AVAILABLE</span>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
                     <a href="Lis%20210.pdf" download="Lis 210.pdf" target="_blank" class="pdf-download-btn">
                         📕 DOWNLOAD LIS 210 PDF (Lis 210.pdf)
+                    </a>
+                    <a href="LIS%20210%20more.pdf" download="LIS 210 more.pdf" target="_blank" class="pdf-download-btn">
+                        📕 DOWNLOAD LIS 210 DETAILED NOTES (LIS 210 more.pdf)
                     </a>
                     <a href="LIS%20204.pdf" download="LIS 204.pdf" target="_blank" class="pdf-download-btn">
                         📕 DOWNLOAD LIS 204 PDF (LIS 204.pdf)
@@ -1056,6 +1062,17 @@
     </div>
 
     <script>
+        // Helper: HTML Escaping
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         // Fallback Question Datasets
         const FALLBACK_QUESTIONS_LIS206 = [
             { type: 'MCQ', category: 'Information Management', text: 'What is the primary objective of Information Management (IM) within an organization?', options: ['To store all organizational data indefinitely without deletion', 'To ensure the right information reaches the right people at the right time in the right format', 'To replace human decision-making with automated file storage', 'To build physical filing cabinets for paper records'], correct: 'B' },
@@ -1131,14 +1148,20 @@
         ];
 
         const FALLBACK_QUESTIONS_LIS210 = [
+            { type: 'Essay', category: 'Cataloguing Fundamentals', text: 'Compare Descriptive Cataloguing and Subject Cataloguing, highlighting the specific functions and tools associated with each.', modelAnswer: 'Descriptive Cataloguing involves identifying, recording, and describing physical bibliographic elements (title, author, edition, publisher, year, pagination) governed by AACR2 and ISBD rules. Subject Cataloguing involves analyzing the intellectual subject content to assign subject headings (LCSH, Sears List) and classification numbers (DDC, LC, MOYS) for shelf collocation.' },
+            { type: 'Essay', category: 'Cataloguing Tools', text: 'Explain the historical and practical significance of the Anglo-American Cataloguing Rules, 2nd Edition (AACR2) in library technical services.', modelAnswer: 'AACR2 is the foundational worldwide standard governing descriptive cataloguing. It provides rules for main/added entries, authority headings, and uniform bibliographic presentation enabling international catalogue record sharing.' },
+            { type: 'Essay', category: 'Cataloguing Rules & Punctuation', text: 'Detail standard ISBD/AACR2 cataloguing punctuation symbols (slash, colon, semicolon, hyphen, comma) and state their structural placement on a card worksheet.', modelAnswer: '(1) Slash (/): Separates Title from Statement of Responsibility; (2) Colon (:): Precedes Place of Publication or Publisher; (3) Semicolon (;): Separates Publisher from Year or Dimensions; (4) Hyphen (-): Used in pagination; (5) Comma (,): Separates author surname from forename.' },
+            { type: 'Essay', category: 'Accessioning Operations', text: 'Explain the purpose of assigning an Accession Number during library processing and distinguish it from a Classification Call Number.', modelAnswer: 'An Accession Number is a unique sequential control number assigned to an individual physical volume upon acquisition. Unlike a Call Number (which is shared by all copies of a title), an Accession Number is unique to a single physical item for inventory tracking.' },
+            { type: 'Essay', category: 'Serials Control Systems', text: 'Discuss the role of Kardex and Kalamazoo card systems in serials management and check-in procedures.', modelAnswer: 'Kardex and Kalamazoo are specialized visible-edge card files used to register incoming serial issues, track publication frequency, monitor missing numbers, record renewal dates, and maintain complete volume histories.' },
+            { type: 'Essay', category: 'Classification Notation Systems', text: 'Compare the notation systems of the Library of Congress (LC) Classification scheme and the Dewey Decimal Classification (DDC) scheme.', modelAnswer: 'LC uses alphanumeric notation (capital letters A-Z + numbers), providing high expansion capacity for academic libraries. DDC uses pure numeric notation (000-999 with decimal extensions), making it ideal for public and school libraries.' },
+            { type: 'Essay', category: 'Dewey Decimal Classification', text: 'List the main subject areas encompassed by DDC Class 300 (Social Sciences) and explain why it represents one of the largest classes in academic libraries.', modelAnswer: 'DDC Class 300 encompasses Sociology, Statistics, Political Science, Economics, Law, Public Administration, Education, and Commerce. It is large due to massive literature generated by human social institutions.' },
             { type: 'Essay', category: 'Easy', text: 'Define Library Classification according to the LIS 210 course notes.', modelAnswer: 'According to the LIS 210 lecture notes, Library Classification is defined as the systematic arrangement of human knowledge and recorded information—in books and non-book documents deposited in the library (such as serials, tapes, microfilms, maps, and computer disks)—into specific subject classes placed in different parts of the library in a logical sequence based on subject analysis.' },
             { type: 'Essay', category: 'Easy', text: 'State the primary aims and objectives of library classification as outlined in the lecture notes.', modelAnswer: 'The primary aims and objectives of library classification are: (1) To ensure the maximum use of library materials; (2) To decrease time lost by library users and staff when searching for books; (3) To arrange books in a helpful, logical order on the shelf; and (4) To achieve subject collocation by grouping books on the same or related subjects together upon request.' },
             { type: 'Essay', category: 'Easy', text: 'List S.R. Ranganathan\'s Five Laws of Library Science as highlighted in the LIS 210 notes.', modelAnswer: 'Ranganathan\'s Five Laws of Library Science are: (1) Books are for use; (2) Every reader his or her book; (3) Every book its reader; (4) Save the time of the reader; and (5) The library is a growing organism.' },
             { type: 'Essay', category: 'Easy', text: 'List and define the five facets of S.R. Ranganathan\'s PMEST formula used in faceted classification.', modelAnswer: 'Ranganathan\'s PMEST formula stands for: (1) P - Personality: The most fundamental and main focal facet in a subject classification; (2) M - Matter: The physical or material substance of the subject; (3) E - Energy: The action, process, operation, or problem; (4) S - Space: The geographical location or territory; and (5) T - Time: The chronological period or era.' },
-            { type: 'Essay', category: 'Easy', text: 'List five sources or parts of a book that a classifier should examine to determine its subject matter.', modelAnswer: 'The five sources to examine are: (1) The Title of the book; (2) The Table of Contents; (3) The Introduction / Preface; (4) Careful examination of the Text itself; and (5) The Publisher\'s Blurb (Dust Jacket notes).' },
-            { type: 'Essay', category: 'Hard', text: 'Detail the complete step-by-step procedure a classifier must follow when classifying a new book, according to the LIS 210 notes.', modelAnswer: 'The LIS 210 notes specify a 5-step classification procedure: Step 1: Determine exactly the true subject of the book by examining the title, table of contents, preface, blurb, or text; Step 2: Consult the Classification Index to identify the appropriate main class or heading; Step 3: Consult the Classification Schedules to find the exact class number corresponding to the subject; Step 4: If greater specificity is required, consult Auxiliary Tables to synthesize numbers; Step 5: Write the finalized classification class number clearly on the flyleaf/title page of the book.' },
-            { type: 'Essay', category: 'Hard', text: 'Critically discuss how Ranganathan\'s 4th Law ("Save the Time of the Reader") and 1st Law ("Books Are for Use") directly justify the necessity of systematic library classification.', modelAnswer: 'Ranganathan\'s 1st Law ("Books Are for Use") establishes that unorganized books stored randomly hinder accessibility. Classification transforms passive storage into an active resource by logically organizing materials by subject on open shelves. Ranganathan\'s 4th Law ("Save the Time of the Reader") mandates that library routines should minimize patron search effort. Classification fulfills this by assigning unique location call numbers and collocating related books together so readers find their required materials without delay.' },
-            { type: 'Essay', category: 'Hard', text: 'Analyze the rule of utility in classification: "Class a book where it will be most useful." Explain how this principle guides a classifier when a book touches multiple subjects.', modelAnswer: 'The overarching principle of library classification is to class a book where it will be most useful to library readers. When a book addresses multiple subjects or interdisciplinary topics, the classifier must assess the primary target audience, local library environment, and user reading background. If a book covers two or three subjects, it is classed under the first or most heavily emphasized subject; if it covers more than three subjects, the rule dictates placing it in a broader general class where patrons searching for that general field will find it most useful.' }
+            { type: 'Essay', category: 'Cataloguing & Technical Services', text: 'Differentiate between Descriptive Cataloguing and Subject Cataloguing. Outline five (5) key rules for effective cataloguing based on the LIS 210 lecture notes.', modelAnswer: 'Descriptive Cataloguing involves identifying and recording physical bibliographic details. Subject Cataloguing involves analyzing intellectual content to assign subject headings and call numbers. Key rules: (1) Attentiveness; (2) Accuracy Over Speed; (3) Consult Cataloguing Rules; (4) Use Pencil on worksheets; and (5) Document Decisions in a Cataloguing Decision File.' },
+            { type: 'Essay', category: 'Serials Management', text: 'Define "Serials" (Periodicals) according to LIS 210 notes. List four (4) common types of serials and explain the function of the Kardex system in serials control.', modelAnswer: 'Serials are information publications issued in successive parts intended to continue indefinitely. Types: Journals, Newspapers, Magazines, Newsletters. The Kardex system tracks incoming issues, missing numbers, and renewal dates.' },
+            { type: 'Essay', category: 'Classification Systems', text: 'Outline the ten (10) Main Classes of the Dewey Decimal Classification (DDC) system from 000 to 999 and explain its decimal subdivision hierarchy.', modelAnswer: 'The 10 main classes of DDC are: 000 Generalities, 100 Philosophy, 200 Religion, 300 Social Sciences, 400 Language, 500 Natural Sciences, 600 Technology, 700 Arts, 800 Literature, 900 History/Geography. DDC subdivides knowledge hierarchically into 10 main classes, 10 divisions, 10 sections, and decimals to infinity.' }
         ];
 
         const FALLBACK_QUESTIONS_LIS212 = [
@@ -1215,7 +1238,7 @@
                 title: 'KNOWLEDGE ORGANIZATION & CLASSIFICATION',
                 subTitle: 'Knowledge Organization & Classification Systems (LIS 210)',
                 file: 'lis210_questions.md',
-                categories: ['ALL', 'Easy', 'Hard'],
+                categories: ['ALL', 'Cataloguing Fundamentals', 'Cataloguing Tools', 'Cataloguing Operations', 'Serials Management', 'Classification Schemes', 'Dewey Decimal Classification', 'PMEST Facets', 'Easy', 'Hard'],
                 qtypes: [
                     { id: 'ALL', label: 'ALL ESSAYS' },
                     { id: 'Essay', label: 'ESSAY ONLY' }
@@ -1493,7 +1516,9 @@
                         if (val) fieldBuffers.modelAnswer.push(val);
                     } else if (currentField === 'options') {
                         if (trimmed.startsWith('-') || /^\d+\./.test(trimmed)) {
-                            options.push(trimmed.replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '').trim());
+                            let optVal = trimmed.replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '').trim();
+                            optVal = optVal.replace(/^[A-Za-z][\).]\s*/, '').trim();
+                            options.push(optVal);
                         }
                     } else if (currentField && fieldBuffers[currentField]) {
                         if (trimmed !== '') {
@@ -2083,7 +2108,8 @@
                 { name: '📕 LIS 208 IT Applications in Libraries (PDF)', file: 'LIS 208.pdf' }
             ],
             'LIS210': [
-                { name: '📕 LIS 210 Knowledge Organization & Classification (PDF)', file: 'Lis 210.pdf' }
+                { name: '📕 LIS 210 Knowledge Organization & Classification (PDF)', file: 'Lis 210.pdf' },
+                { name: '📕 LIS 210 Detailed Handwritten Lecture Notes (PDF)', file: 'LIS 210 more.pdf' }
             ],
             'LIS212': [
                 { name: '📕 LIS 212 User Studies & Information Needs (PDF)', file: '212.pdf' }
