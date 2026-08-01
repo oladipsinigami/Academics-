@@ -268,9 +268,9 @@ Model Answer: An Accession Number is a unique, sequential control number assigne
 
 ### QUESTION 25
 Type: Essay
-Category: Serials Control Systems
-Text: Discuss the role of Kardex and Kalamazoo card systems in serials management and check-in procedures.
-Model Answer: Kardex and Kalamazoo are specialized visible-edge card file equipment designed for serials control. They allow serials librarians to register incoming journal issues, track frequency of publication, monitor missing or delayed numbers, record subscription renewal dates, and maintain complete volume histories for each serial title in the library.
+Category: Classification Rules
+Text: State and explain the fundamental classification rule regarding 'Subject versus Form' when classifying library materials according to LIS 210 notes.
+Model Answer: The fundamental rule of classification states: 'Class a book by its subject first, and then by its form.' Intellectual subject content takes absolute precedence over the physical or literary presentation format. For example, a dictionary of medical terms is classed under Medicine (subject) in dictionary format (form), rather than under General Dictionaries.
 
 ---
 
@@ -333,8 +333,8 @@ Model Answer: An Accession Number is a unique, sequential identification number 
 ### QUESTION 33
 Type: Essay
 Category: Serials Management
-Text: Define 'Serials' (Periodicals) according to LIS 210 notes. List four (4) common types of serials and explain the function of the Kardex system in serials control.
-Model Answer: Serials are information publications issued in successive parts, usually carrying numerical or chronological designations, and intended to be continued indefinitely. Four common types: (1) Academic Journals; (2) Newspapers; (3) Magazines; and (4) Newsletters. The Kardex system (or Kalamazoo) is a specialized visual card file unit used in serials management to register incoming issues, track missing numbers, monitor subscription renewal dates, and maintain record cards showing volume/issue history for each serial title.
+Text: Define 'Serials' (Periodicals) according to LIS 210 notes, list four (4) common types of serials, and explain the key objectives of serials control in library technical services.
+Model Answer: Serials are information publications issued in successive parts, usually carrying numerical or chronological designations, and intended to be continued indefinitely. Four common types: (1) Academic Journals; (2) Newspapers; (3) Magazines; and (4) Newsletters. Key objectives of serials control: (1) Registering incoming serial issues immediately upon arrival; (2) Tracking missing or delayed numbers to send publisher claims; (3) Monitoring subscription renewal dates to prevent service gaps; and (4) Organizing completed volumes for binding and permanent archiving.
 
 ---
 
