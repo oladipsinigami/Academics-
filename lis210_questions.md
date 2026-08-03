@@ -360,7 +360,7 @@ Model Answer: (1) Personality (P): The core fundamental focal entity (e.g. 'Mala
 
 ### QUESTION 36
 Type: Essay
-Category: 2024/2025 Semester Examination (Section A)
+Category: Exam Past Questions
 Text: Arrange the following headings both Word-by-Word and Letter-by-Letter according to standard library cataloguing filing rules:
 `New Bussa, Newbolt, Newbury, New day, News report, Newson Edward, Newspapers, Newton Isaac, New William, Newbolt John` (10 marks)
 Model Answer: 
@@ -392,7 +392,7 @@ Model Answer:
 
 ### QUESTION 37
 Type: Essay
-Category: 2024/2025 Semester Examination (Section A)
+Category: Exam Past Questions
 Text: Highlight ten (10) practical guides and rules for effective cataloguing in a library technical services unit. (10 marks)
 Model Answer: Ten practical rules for effective cataloguing:
 1. Attentiveness & Concentration: Focus fully during cataloguing to eliminate typographical errors in bibliographic records.
@@ -410,7 +410,7 @@ Model Answer: Ten practical rules for effective cataloguing:
 
 ### QUESTION 38
 Type: Essay
-Category: 2024/2025 Semester Examination (Section A)
+Category: Exam Past Questions
 Text: Arrange the following headings both Word-by-Word and Letter-by-Letter according to standard library cataloguing filing rules:
 `Port Duty, Port of call, Portal, Portable, Port Wine, Port Authority, Portcullis, Portland cement, Porter, Portrait` (10 marks)
 Model Answer: 
@@ -442,7 +442,7 @@ Model Answer:
 
 ### QUESTION 39
 Type: Essay
-Category: 2024/2025 Semester Examination (Section A)
+Category: Exam Past Questions
 Text: Define what a 'See Reference' is in the cataloguing process, explaining its function, cross-referencing mechanics, and distinction from a 'See Also Reference'. (10 marks)
 Model Answer: A **See Reference** (also known as a Directional Cross-Reference) is an authority control entry in a library catalogue that directs a user from a heading or term under which no bibliographic entries are filed to the preferred standard heading under which all items on that topic or author are catalogued.
 - **Function**: Guides searchers from variant spellings, pseudonyms, discarded forms, or synonymous terms to the single authorized access point (e.g., *Twain, Mark SEE Clemens, Samuel Langhorne*; or *Avian Flu SEE Bird Flu*).
@@ -452,7 +452,7 @@ Model Answer: A **See Reference** (also known as a Directional Cross-Reference) 
 
 ### QUESTION 40
 Type: Essay
-Category: 2024/2025 Semester Examination (Section B)
+Category: Exam Past Questions
 Text: What is the relevance and organizational value of non-book resources (multimedia, audio-visuals, microforms, digital assets) in modern libraries and information centres? (20 marks)
 Model Answer: Non-book resources comprise information materials other than traditional printed monographs and serials—such as microforms (microfiche, microfilm), audio-visual materials (CDs, DVDs, audiobooks), spatial data (maps, globes), electronic assets (e-books, online databases), and archival artifacts.
 Relevance and Organizational Value:
@@ -465,7 +465,7 @@ Relevance and Organizational Value:
 
 ### QUESTION 41
 Type: Essay
-Category: 2024/2025 Semester Examination (Section B)
+Category: Exam Past Questions
 Text: What are the key differences between a Dictionary Catalogue and a Classified Catalogue in terms of arrangement, user access points, indexing, and shelf collocation? (20 marks)
 Model Answer: Comparative Analysis:
 1. Arrangement:
@@ -482,7 +482,7 @@ Model Answer: Comparative Analysis:
 
 ### QUESTION 42
 Type: Essay
-Category: 2024/2025 Semester Examination (Section B)
+Category: Exam Past Questions
 Text: Define a Library Catalogue. Detail its essential functions, physical forms (card, book, COM, Web-OPAC), and key structural components. (20 marks)
 Model Answer: A **Library Catalogue** is a systematically arranged register of all bibliographic items (books, serials, multimedia, digital assets) held in a library or information center, providing complete access points to retrieve their physical or electronic locations.
 1. Essential Functions (Cutter's Objectives):
@@ -499,7 +499,7 @@ Model Answer: A **Library Catalogue** is a systematically arranged register of a
 
 ### QUESTION 43
 Type: Essay
-Category: 2024/2025 Semester Examination (Section B)
+Category: Exam Past Questions
 Text: Critically discuss the differences between the Dewey Decimal Classification (DDC) system and the Library of Congress Classification (LCC) system, comparing notation, structure, flexibility, and suitability for academic libraries. (20 marks)
 Model Answer: Comprehensive Comparison:
 1. Notation:
