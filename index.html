@@ -1174,7 +1174,6 @@
             { type: 'Essay', category: 'Exam Past Questions', text: 'Synthesize Carol Kuhlthau\'s Information Search Process (ISP) Model. Detail the six (6) sequential stages, analyzing the cognitive, affective, and physical dimensions at each stage. (20 marks)', modelAnswer: 'Kuhlthau\'s ISP details six stages: Initiation (uncertainty), Selection (optimism), Exploration (confusion/frustration/doubt - confidence dip), Formulation (clarity/confidence - critical turning point), Collection (efficiency/direction), and Presentation (relief/satisfaction).' },
             { type: 'Essay', category: 'Exam Past Questions', text: 'Analyze the unique information seeking behaviors and systemic barriers experienced by rural communities in developing countries. Propose four (4) actionable strategic interventions for public libraries. (20 marks)', modelAnswer: 'Behaviors: Reliance on informal oral channels and livelihood needs. Barriers: Illiteracy, lack of local language materials, poor ICT infrastructure. Interventions: (1) Mobile Library Outreach & Solar Info-Kits; (2) Indigenous Language Audio-Visual Repositories; (3) Community Information Centers (CICs); (4) Stakeholder Partnerships.' },
             { type: 'Essay', category: 'Exam Past Questions', text: 'Formulate a comprehensive strategic framework for developing an inclusive, barrier-free Information Service Environment for library patrons with physical, sensory, and cognitive disabilities. (20 marks)', modelAnswer: 'Four Pillars: (1) Architectural Accessibility (ramps, wide aisles, height-adjustable desks); (2) Assistive Technology (screen readers JAWS/NVDA, Braille embossers); (3) Accessible Digital Content & OPACs (WCAG 2.1 AA compliance); (4) Staff Training & Policy Framework.' }
-        ];(screen readers JAWS/NVDA, Braille embossers, height-adjustable desks); (3) Accessible Digital Content (WCAG 2.1 AA compliance); and (4) Staff Etiquette Training.' }
         ];
 
         const FALLBACK_QUESTIONS_LIS214 = [
@@ -1697,6 +1696,11 @@
         }
 
         function applyFilters() {
+            let targetCount = rawQuestions.length;
+            if (selectedCount !== 'ALL') {
+                targetCount = parseInt(selectedCount, 10) || rawQuestions.length;
+            }
+
             let matchingPool = [...rawQuestions];
             
             if (selectedType && selectedType !== 'ALL') {
@@ -1708,13 +1712,12 @@
             if (selectedCategory && selectedCategory !== 'ALL') {
                 const normCat = selectedCategory.trim().toLowerCase();
                 categoryFiltered = categoryFiltered.filter(q => q.category && q.category.trim().toLowerCase() === normCat);
-                activeQuestions = categoryFiltered;
-            } else {
-                let targetCount = rawQuestions.length;
-                if (selectedCount !== 'ALL') {
-                    targetCount = parseInt(selectedCount, 10);
+                if (selectedCount !== 'ALL' && categoryFiltered.length > targetCount) {
+                    activeQuestions = categoryFiltered.slice(0, targetCount);
+                } else {
+                    activeQuestions = categoryFiltered;
                 }
-
+            } else {
                 if (categoryFiltered.length >= targetCount) {
                     activeQuestions = categoryFiltered.slice(0, targetCount);
                 } else {
@@ -1727,7 +1730,7 @@
                         activeQuestions.push(q);
                     }
 
-                    if (activeQuestions.length < targetCount) {
+                    if (activeQuestions.length < targetCount && selectedType === 'ALL') {
                         const fallbackPool = rawQuestions.filter(q => !activeTexts.has(q.text));
                         for (let q of fallbackPool) {
                             if (activeQuestions.length >= targetCount) break;
@@ -1739,7 +1742,7 @@
                 }
             }
 
-            if (activeQuestions.length === 0 && rawQuestions.length > 0) {
+            if (activeQuestions.length === 0 && rawQuestions.length > 0 && selectedCategory === 'ALL' && selectedType === 'ALL') {
                 activeQuestions = rawQuestions.slice(0, Math.min(rawQuestions.length, targetCount || 10));
             }
 
@@ -1748,7 +1751,12 @@
 
         function renderQuestions() {
             if (activeQuestions.length === 0) {
-                questionsContainer.innerHTML = `<div class="question-card" style="text-align:center;">No questions found matching selected type/topic filters.</div>`;
+                questionsContainer.innerHTML = `
+                    <div class="question-card" style="text-align:center; padding: 40px;">
+                        <h3 style="color:var(--accent-gold); font-size:1.1rem; margin-bottom:8px;">⚠️ NO QUESTIONS FOUND FOR SELECTED FILTERS</h3>
+                        <p style="color:var(--text-muted); font-size:0.85rem;">No questions match the current combination of Topic ("${escapeHtml(selectedCategory)}") and Type ("${escapeHtml(selectedType)}"). Please select "ALL TOPICS" or "ALL TYPES".</p>
+                    </div>
+                `;
                 updateProgress();
                 return;
             }
